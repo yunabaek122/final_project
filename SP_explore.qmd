@@ -44,21 +44,9 @@ clean_cc = cooling_centers[(cooling_centers["USER_Open_"] == "All") & (~cooling_
 #Now plot these
 clean_cc.plot(marker='o', color = "green", figsize=(10,8), alpha=0.5)
 
-#Still seeing some overlap so going to break it out by the different types of 
+#Still seeing some overlap so going to break it out by the different types of centers
 ax = clean_cc.plot(column="USER_Type", figsize=(10,8), legend=True, cmap="tab10")
 ax.set_title("Cooling Centers by Type", fontsize=16)
 plt.show()
 
-
-
-```
-
-```{python}
-fig, ax = plt.subplots(1, 1, figsize=(10, 8))
-data.plot(column='desired_column', 
-          cmap='Blues',              
-          legend=True,
-          ax=ax)
-plt.title("Choropleth Map")
-plt.show()
 ```
