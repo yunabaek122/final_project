@@ -1,0 +1,155 @@
+---
+title: "Final Project_ACS Data"
+format: html
+---
+
+```{python}
+import geopandas as gpd
+import pandas as pd
+import pyogrio
+import os
+import matplotlib.pyplot as plt
+```
+
+```{python}
+path = "/Users/yunabaek/Desktop/3. Python II/final_project"
+
+acs5_df = pd.read_csv(os.path.join(path, "ACS_5-Year_Demographic_Characteristics_DC_Census_Tract.csv"))
+
+acs_shp = gpd.read_file(os.path.join(path, "ACS_5-Year_Demographic_Characteristics_DC_Census_Tract/ACS_5-Year_Demographic_Characteristics_DC_Census_Tract.shp"))
+
+poverty_df = pd.read_csv(os.path.join(path, "ACSST1Y2023.S1701-2024-11-17T220536.csv"))
+```
+
+```{python}
+social_df = pd.read_csv(os.path.join(path,
+"ACS_5-Year_Social_Characteristics_DC_Census_Tract.csv"))
+
+social_shp = gpd.read_file(os.path.join(path,"ACS_5-Year_Social_Characteristics_DC_Census_Tract/ACS_5-Year_Social_Characteristics_DC_Census_Tract.shp"))
+```
+
+```{python}
+acs_shp.head(2)
+acs5_df.head(2)
+```
+
+POC
+```{python}
+# Compute 'poc' as the ratio of the difference between 'DP05_0033E' and 'DP05_0079E' to 'DP05_0033E'
+acs_shp['poc'] = (acs_shp['DP05_0033E'] - acs_shp['DP05_0079E']) / acs_shp['DP05_0033E']
+```
+
+```{python}
+fig, ax = plt.subplots(figsize=(11, 8))
+poc_plot = acs_shp.plot(
+    column='poc', 
+    legend=True,
+    cmap='viridis',
+    legend_kwds={'label': 'Proportion', 'orientation': 'horizontal'},
+    ax=ax
+)
+ax.set_axis_off()
+ax.set_title('People of Color')
+plt.show()
+```
+
+Elderly
+```{python}
+acs_shp['elderly'] = acs_shp['DP05_0024E'] / acs_shp['DP05_0001E']
+```
+```{python}
+fig, ax = plt.subplots(figsize=(11, 8))
+elderly_plot = acs_shp.plot(
+    column='elderly', 
+    legend=True,
+    cmap='viridis',
+    legend_kwds={'label': 'Proportion', 'orientation': 'horizontal'},
+    ax=ax
+)
+ax.set_axis_off()
+ax.set_title('Population of Older Adults')
+plt.show()
+
+```
+
+
+
+Disability
+
+```{python}
+social_shp['disability'] = social_shp['DP02_0072E'] / social_shp['DP02_0071E']
+```
+```{python}
+disability_plot = social_shp.plot(column = 'disability', legend=True,
+cmap='viridis',
+legend_kwds={'label': 'Population',
+'orientation': 'horizontal'}
+)
+
+```
+
+```{python}
+disability_plot = social_shp.plot(
+    column='disability', 
+    legend=True,
+    cmap='viridis',
+    legend_kwds={
+        'label': 'Percentage of Disability Population',
+        'orientation': 'horizontal'
+    }
+)
+
+fig, ax = plt.subplots(figsize=(11, 8))
+disability_plot = social_shp.plot(
+    column='disability', 
+    legend=True,
+    cmap='viridis',
+    legend_kwds={'label': 'Proportion', 'orientation': 'horizontal'},
+    ax=ax
+)
+ax.set_axis_off()
+ax.set_title('Population of Older Adults')
+plt.show()
+```
+
+Poverty / Low-income
+
+```{python}
+poverty_df.head()
+
+poverty_df.rename(columns={'District of Columbia!!Percent below poverty level!!Estimate': 'pct_below_poverty'}, inplace=True)
+```
+
+```{python}
+poverty_22_df = pd.read_csv(os.path.join(path, "ACSST5Y2022.S1701-2024-11-21T005208.csv"))
+poverty_22_df['ZIPCODE'] = None
+
+for i in range(0, len(poverty_22_df), 7):
+    # Extract the ZIP code from row 0 of each 8-row block
+    zipcode = poverty_22_df.iloc[i, 0]
+    poverty_22_df.loc[i:i+6, 'ZIPCODE'] = zipcode 
+
+# Keep only every 6th row starting from the first row
+poverty_df = poverty_22_df.iloc[6::7].reset_index(drop=True)
+
+# Extract ZipCode
+poverty_df['ZIPCODE'] = poverty_df['ZIPCODE'].str.split().str[-1]
+poverty_df['ZIPCODE'] = poverty_df['ZIPCODE'].astype(int)
+
+# Renaming
+poverty_df = poverty_df.rename(columns={'Population for whom poverty status is determined': 'poverty'})
+```
+
+```{python}
+zip_shp = gpd.read_file(os.path.join(path, "Zip_Codes/Zip_Codes.shp"))
+
+poverty_merged_shp = zip_shp.merge(poverty_df, on='ZIPCODE', how='left')
+```
+
+```{python}
+poverty_plot = poverty_merged_shp.plot(column = 'poverty', legend=True,
+cmap='viridis',
+legend_kwds={'label': 'Population',
+'orientation': 'horizontal'}
+)
+```
