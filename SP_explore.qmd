@@ -23,7 +23,7 @@ import geopandas as gpd
 import pandas as pd
 import matplotlib.pyplot as plt
 
-filepath = r"C:\Users\12019\OneDrive - The University of Chicago\Documents\GitHub\final_project\Cooling_Centers_-_District_of_Columbia\Cooling_Centers_-_District_of_Columbia.shp"
+filepath = r"C:\Users\12019\OneDrive - The University of Chicago\Documents\GitHub\final_project\Data\Cooling_Centers_-_District_of_Columbia\Cooling_Centers_-_District_of_Columbia.shp"
 cooling_centers = gpd.read_file(filepath)
 ```
 
@@ -48,5 +48,27 @@ clean_cc.plot(marker='o', color = "green", figsize=(10,8), alpha=0.5)
 ax = clean_cc.plot(column="USER_Type", figsize=(10,8), legend=True, cmap="tab10")
 ax.set_title("Cooling Centers by Type", fontsize=16)
 plt.show()
+
+#Input the empty DC graph 
+filepath2 = r"C:\Users\12019\OneDrive - The University of Chicago\Documents\GitHub\final_project\Data\Wards_from_2022\Wards_from_2022.shp"
+empty_DC = gpd.read_file(filepath2)
+
+```
+
+```{python}
+#Plot the empty DC graph 
+empty_DC.plot(edgecolor="black", facecolor="none", figsize=(10,10))
+plt.title("DC Empty Map", fontsize=14)
+plt.show()
+
+```
+
+```{python}
+#Create a table of proportions for the breakdown of each cooling center 
+counts = clean_cc["USER_Type"].value_counts()
+percentages = counts / counts.sum() * 100
+prop_table = pd.DataFrame({"Counts": counts, "Percentage": percentages.round(2)})
+
+print(prop_table)
 
 ```
