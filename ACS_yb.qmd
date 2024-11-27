@@ -84,7 +84,135 @@ ax.set_title('People of Color', fontsize=16, fontweight='bold', pad=15)
 
 plt.tight_layout()
 plt.show()
+fig.savefig("poc_plot.png", dpi=300, bbox_inches='tight')
+
 ```
+
+POC - Ward data
+```{python}
+acs_ward = gpd.read_file(os.path.join(path, "ward_ACS_5-Year_Demographic_Characteristics_DC_Ward/ACS_5-Year_Demographic_Characteristics_DC_Ward.shp"))
+
+# Compute 'poc' as the ratio of the difference between 'DP05_0033E' and 'DP05_0079E' to 'DP05_0033E'
+acs_ward['poc'] = (acs_ward['DP05_0033E'] - acs_ward['DP05_0079E']) / acs_ward['DP05_0033E']
+```
+
+```{python}
+fig, ax = plt.subplots(figsize=(12, 10))
+poc_plot = acs_ward.plot(
+    column='poc', 
+    cmap='YlGnBu',
+    legend=True,
+    legend_kwds={
+        'label': 'Proportion',
+        'orientation': 'horizontal',
+        'shrink': 0.5,  # Shrink the color bar
+        'pad': 0.05  # Add space between the color bar and the map
+    },
+    ax=ax,
+    edgecolor='black',
+    linewidth=0.2
+)
+
+ax.set_axis_off()  # Remove axis
+ax.set_title('People of Color', fontsize=16, fontweight='bold', pad=15)
+
+plt.tight_layout()
+plt.show()
+fig.savefig("poc_ward.png", dpi=300, bbox_inches='tight')
+
+```
+
+Sumner's graphs
+
+```{python}
+cooling_centers = gpd.read_file(os.path.join(path, "Cooling_Centers_-_District_of_Columbia/Cooling_Centers_-_District_of_Columbia.shp"))
+```
+
+```{python}
+#Let's explore the cooling centers first. Not all cooling centers are entirely accessible. Only include low-barrier and day shelters that are accessible to all genders. Eliminate all centers that are closed. 
+clean_cc = cooling_centers[(cooling_centers["USER_Open_"] == "All") & (~cooling_centers["USER_Hours"].str.contains('closed', case=False, na=False))]
+
+#Now plot these
+clean_cc.plot(marker='o', color = "green", figsize=(10,8), alpha=0.5)
+
+#Still seeing some overlap so going to break it out by the different types of centers
+ax = clean_cc.plot(column="USER_Type", figsize=(10,8), legend=True, cmap="tab10")
+ax.set_title("Cooling Centers by Type", fontsize=16)
+plt.show()
+```
+
+
+```{python}
+#Next, plot out the empty ward map 
+empty_DC = gpd.read_file(os.path.join(path, "Wards_from_2022/Wards_from_2022.shp"))
+
+#Plot the empty DC graph 
+empty_DC.plot(edgecolor="black", facecolor="none", figsize=(10,10))
+plt.title("DC Empty Map", fontsize=14)
+plt.show()
+
+```
+
+
+```{python}
+#Map both of the graphs on top of one another
+clean_cc = clean_cc.to_crs(empty_DC.crs)
+
+fig, ax = plt.subplots(figsize=(10,10))
+empty_DC.plot(ax=ax, edgecolor="black", facecolor="none", label="Layer 1")
+clean_cc.plot(ax=ax, column="USER_Type", alpha=0.7, legend=True, cmap="tab10", label="Layer2")
+
+plt.title("All Accessible Cooling Centers by Ward")
+plt.show()
+
+```
+
+* Layering three graphs (need to fix legend)
+
+```{python}
+# Plot the first map (acs_ward) for "People of Color"
+fig, ax = plt.subplots(figsize=(12, 10))
+
+# Plot 'acs_ward' on the axis
+poc_plot = acs_ward.plot(
+    column='poc', 
+    cmap='YlGnBu',
+    legend=True,
+    legend_kwds={
+        'label': 'Proportion',
+        'orientation': 'horizontal',
+        'shrink': 0.5,  # Shrink the color bar
+        'pad': 0.05  # Add space between the color bar and the map
+    },
+    ax=ax,
+    edgecolor='black',
+    linewidth=0.2
+)
+
+# Set axis properties
+ax.set_axis_off()  # Remove axis
+ax.set_title('People of Color', fontsize=16, fontweight='bold', pad=15)
+
+# Now plot both layers (empty_DC and clean_cc) on top of each other
+clean_cc = clean_cc.to_crs(empty_DC.crs)
+
+# Plot the second map with clean_cc and empty_DC
+empty_DC.plot(ax=ax, edgecolor="black", facecolor="none", label="Layer 1")
+clean_cc.plot(ax=ax, column="USER_Type", alpha=0.7, legend=False, cmap="tab10", label="Layer 2")
+
+# Set title for the combined map
+plt.title("All Accessible Cooling Centers by Ward")
+
+# Adjust layout
+plt.tight_layout()
+
+# Show the final map with all layers
+plt.show()
+
+
+fig.savefig("layered_pocward.png", dpi=300, bbox_inches='tight')
+```
+
 
 
 Elderly
