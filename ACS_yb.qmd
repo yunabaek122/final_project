@@ -1,6 +1,20 @@
 ---
 title: "Final Project_ACS Data"
-format: html
+author: "Yuna Baek"
+date: ""
+format: 
+    pdf:
+      keep-tex: true
+      latex-engine: xelatex
+      include-in-header: 
+        text: |
+          \usepackage{fvextra}
+          \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+          \DefineVerbatimEnvironment{OutputCode}{Verbatim}{breaklines,commandchars=\\\{\}}
+
+execute:
+  eval: true 
+  echo: true
 ---
 
 ```{python}
@@ -12,13 +26,11 @@ import matplotlib.pyplot as plt
 ```
 
 ```{python}
-path = "/Users/yunabaek/Desktop/3. Python II/final_project"
+path = "/Users/yunabaek/Desktop/3. Python II/final_project/Data"
 
 acs5_df = pd.read_csv(os.path.join(path, "ACS_5-Year_Demographic_Characteristics_DC_Census_Tract.csv"))
 
 acs_shp = gpd.read_file(os.path.join(path, "ACS_5-Year_Demographic_Characteristics_DC_Census_Tract/ACS_5-Year_Demographic_Characteristics_DC_Census_Tract.shp"))
-
-poverty_df = pd.read_csv(os.path.join(path, "ACSST1Y2023.S1701-2024-11-17T220536.csv"))
 ```
 
 ```{python}
@@ -28,12 +40,9 @@ social_df = pd.read_csv(os.path.join(path,
 social_shp = gpd.read_file(os.path.join(path,"ACS_5-Year_Social_Characteristics_DC_Census_Tract/ACS_5-Year_Social_Characteristics_DC_Census_Tract.shp"))
 ```
 
-```{python}
-acs_shp.head(2)
-acs5_df.head(2)
-```
-
 POC
+DP05_0033E = RACE: Total population
+DP05_0079E = HISPANIC OR LATINO AND RACE: Total population: Not Hispanic or Latino: White alone
 ```{python}
 # Compute 'poc' as the ratio of the difference between 'DP05_0033E' and 'DP05_0079E' to 'DP05_0033E'
 acs_shp['poc'] = (acs_shp['DP05_0033E'] - acs_shp['DP05_0079E']) / acs_shp['DP05_0033E']
@@ -44,7 +53,7 @@ fig, ax = plt.subplots(figsize=(11, 8))
 poc_plot = acs_shp.plot(
     column='poc', 
     legend=True,
-    cmap='viridis',
+    cmap='YlGnBu',
     legend_kwds={'label': 'Proportion', 'orientation': 'horizontal'},
     ax=ax
 )
@@ -53,25 +62,58 @@ ax.set_title('People of Color')
 plt.show()
 ```
 
+```{python}
+fig, ax = plt.subplots(figsize=(12, 10))
+poc_plot = acs_shp.plot(
+    column='poc', 
+    cmap='YlGnBu',
+    legend=True,
+    legend_kwds={
+        'label': 'Proportion',
+        'orientation': 'horizontal',
+        'shrink': 0.5,  # Shrink the color bar
+        'pad': 0.05  # Add space between the color bar and the map
+    },
+    ax=ax,
+    edgecolor='black',
+    linewidth=0.2
+)
+
+ax.set_axis_off()  # Remove axis
+ax.set_title('People of Color', fontsize=16, fontweight='bold', pad=15)
+
+plt.tight_layout()
+plt.show()
+```
+
+
 Elderly
 ```{python}
 acs_shp['elderly'] = acs_shp['DP05_0024E'] / acs_shp['DP05_0001E']
 ```
 ```{python}
-fig, ax = plt.subplots(figsize=(11, 8))
+fig, ax = plt.subplots(figsize=(12, 10))
 elderly_plot = acs_shp.plot(
     column='elderly', 
+    cmap='YlGnBu',
     legend=True,
-    cmap='viridis',
-    legend_kwds={'label': 'Proportion', 'orientation': 'horizontal'},
-    ax=ax
+    legend_kwds={
+        'label': 'Proportion',
+        'orientation': 'horizontal',
+        'shrink': 0.5,
+        'pad': 0.05
+    },
+    ax=ax,
+    edgecolor='black',
+    linewidth=0.2
 )
+
 ax.set_axis_off()
-ax.set_title('Population of Older Adults')
+ax.set_title('Population of Older Adults', fontsize=16, fontweight='bold', pad=15)
+
+plt.tight_layout()
 plt.show()
-
 ```
-
 
 
 Disability
@@ -85,52 +127,49 @@ cmap='viridis',
 legend_kwds={'label': 'Population',
 'orientation': 'horizontal'}
 )
-
 ```
 
 ```{python}
+fig, ax = plt.subplots(figsize=(12, 10))
 disability_plot = social_shp.plot(
     column='disability', 
+    cmap='YlGnBu',
     legend=True,
-    cmap='viridis',
     legend_kwds={
-        'label': 'Percentage of Disability Population',
-        'orientation': 'horizontal'
-    }
+        'label': 'Proportion',
+        'orientation': 'horizontal',
+        'shrink': 0.5,
+        'pad': 0.05
+    },
+    ax=ax,
+    edgecolor='black',
+    linewidth=0.2
 )
 
-fig, ax = plt.subplots(figsize=(11, 8))
-disability_plot = social_shp.plot(
-    column='disability', 
-    legend=True,
-    cmap='viridis',
-    legend_kwds={'label': 'Proportion', 'orientation': 'horizontal'},
-    ax=ax
-)
 ax.set_axis_off()
-ax.set_title('Population of Older Adults')
+ax.set_title('Population with Disabilities', fontsize=16, fontweight='bold', pad=15)
+
+plt.tight_layout()
 plt.show()
 ```
 
 Poverty / Low-income
 
 ```{python}
-poverty_df.head()
+poverty_df = pd.read_csv(os.path.join(path, "ACSST5Y2022.S1701-2024-11-21T005208.csv"))
 
 poverty_df.rename(columns={'District of Columbia!!Percent below poverty level!!Estimate': 'pct_below_poverty'}, inplace=True)
+poverty_df['ZIPCODE'] = None
 ```
 
 ```{python}
-poverty_22_df = pd.read_csv(os.path.join(path, "ACSST5Y2022.S1701-2024-11-21T005208.csv"))
-poverty_22_df['ZIPCODE'] = None
-
-for i in range(0, len(poverty_22_df), 7):
+for i in range(0, len(poverty_df), 7):
     # Extract the ZIP code from row 0 of each 8-row block
-    zipcode = poverty_22_df.iloc[i, 0]
-    poverty_22_df.loc[i:i+6, 'ZIPCODE'] = zipcode 
+    zipcode = poverty_df.iloc[i, 0]
+    poverty_df.loc[i:i+6, 'ZIPCODE'] = zipcode 
 
 # Keep only every 6th row starting from the first row
-poverty_df = poverty_22_df.iloc[6::7].reset_index(drop=True)
+poverty_df = poverty_df.iloc[6::7].reset_index(drop=True)
 
 # Extract ZipCode
 poverty_df['ZIPCODE'] = poverty_df['ZIPCODE'].str.split().str[-1]
@@ -147,9 +186,121 @@ poverty_merged_shp = zip_shp.merge(poverty_df, on='ZIPCODE', how='left')
 ```
 
 ```{python}
+
+fig, ax = plt.subplots(figsize=(12, 10))
+poverty_plot = poverty_merged_shp.plot(
+    column='poverty', 
+    cmap='YlGnBu',
+    legend=True,
+    legend_kwds={
+        'label': 'Proportion',
+        'orientation': 'horizontal',
+        'shrink': 0.5,
+        'pad': 0.05
+    },
+    ax=ax,
+    edgecolor='black',
+    linewidth=0.2
+)
+
+ax.set_axis_off()
+ax.set_title('Low Income Population', fontsize=16, fontweight='bold', pad=15)
+
+plt.tight_layout()
+plt.show()
+
+```
+
+
+```{python}
 poverty_plot = poverty_merged_shp.plot(column = 'poverty', legend=True,
 cmap='viridis',
 legend_kwds={'label': 'Population',
 'orientation': 'horizontal'}
 )
 ```
+
+
+Poverty status based on Income level
+
+
+```{python}
+income_df = pd.read_csv(os.path.join(path, "ACSST5Y2022.S1901-2024-11-27T173227.csv"))
+income_df['ZIPCODE'] = None
+income_df = income_df.iloc[9:].reset_index(drop=True)
+```
+
+```{python}
+for i in range(0, len(income_df), 9):
+    # Extract the ZIP code from row 0 of each 8-row block
+    zipcode = income_df.iloc[i, 0]
+    income_df.loc[i:i+6, 'ZIPCODE'] = zipcode 
+
+# Keep only every 6th row starting from the first row
+income_df = income_df.iloc[6::9].reset_index(drop=True)
+
+# Extract ZipCode
+income_df['ZIPCODE'] = income_df['ZIPCODE'].str.split().str[-1]
+income_df['ZIPCODE'] = income_df['ZIPCODE'].astype(int)
+
+# Renaming
+income_df = income_df.rename(columns={'Total!!Less than $10,000': 'poverty'})
+```
+
+```{python}
+income_merged_shp = zip_shp.merge(income_df, on='ZIPCODE', how='left')
+```
+
+```{python}
+
+fig, ax = plt.subplots(figsize=(12, 10))
+income_plot = income_merged_shp.plot(
+    column='poverty', 
+    cmap='YlGnBu',
+    legend=True,
+    legend_kwds={
+        'label': 'Proportion',
+        'orientation': 'horizontal',
+        'shrink': 0.5,
+        'pad': 0.05
+    },
+    ax=ax,
+    edgecolor='black',
+    linewidth=0.2
+)
+
+ax.set_axis_off()
+ax.set_title('Low Income Population', fontsize=16, fontweight='bold', pad=15)
+
+plt.tight_layout()
+plt.show()
+```
+
+
+
+Debugging plot
+
+```{python}
+
+# income_merged_shp = cityboundaries_shp.merge(income_df, on='ZIPCODE', how='left')
+
+```
+
+```{python}
+fig, ax = plt.subplots(figsize=(12, 10))
+income_plot = income_merged_shp.plot(
+    column='poverty', 
+    cmap='YlGnBu',
+    ax=ax,
+    edgecolor='black',
+    linewidth=0.2
+)
+
+ax.set_axis_off()
+ax.set_title('Low Income Population', fontsize=16, fontweight='bold', pad=15)
+
+plt.tight_layout()
+plt.show()
+
+```
+

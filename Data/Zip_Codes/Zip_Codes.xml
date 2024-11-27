@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+    <idinfo>
+        <citation>
+            <citeinfo>
+                <origin/>
+                <pubdate>20130704</pubdate>
+                <title>Zip Codes</title>
+                <geoform>vector digital data</geoform>
+                <lworkcit>
+                    <citeinfo>
+                        <title>DC Geographic Information System</title>
+                    </citeinfo>
+                </lworkcit>
+            </citeinfo>
+        </citation>
+        <descript>
+            <abstract>Zip Codes (5-digit). The dataset polygons represent location and attributes of zip codes, created as part of the DC Geographic Information System (DC GIS) for the D.C. Office of the Chief Technology Officer (OCTO) and participating D.C. government agencies. Zip Codes were identified from public records (US Postal Service) and created selecting arcs from the street centerlines and vector property map.</abstract>
+            <purpose>This data is used for the planning and management of Washington, D.C. by local government agencies.</purpose>
+            <supplinf>The five-digit ZIP (Zone Improvement Plan) Code was introduced to the public July 1, 1963, and was viewed as a positive step for improving the productivity of mail distribution during a period of escalating mail volume and expanding delivery stops.</supplinf>
+        </descript>
+        <timeperd>
+            <timeinfo>
+                <sngdate>
+                    <caldate>20130704</caldate>
+                </sngdate>
+            </timeinfo>
+            <current>publication date</current>
+        </timeperd>
+        <status>
+            <progress>In work</progress>
+            <update>As needed</update>
+        </status>
+        <spdom>
+            <bounding>
+                <westbc>-77.119892</westbc>
+                <eastbc>-76.909016</eastbc>
+                <northbc>38.995969</northbc>
+                <southbc>38.803837</southbc>
+            </bounding>
+        </spdom>
+        <keywords>
+            <theme>
+                <themekt>None</themekt>
+                <themekey>society</themekey>
+                <themekey>Postal Service</themekey>
+                <themekey>Five Digit Zip Code</themekey>
+                <themekey>boundary</themekey>
+                <themekey>location</themekey>
+                <themekey>Zip Code</themekey>
+            </theme>
+            <theme>
+                <themekt>ISO 19115 Topic Categories</themekt>
+                <themekey>boundaries</themekey>
+                <themekey>society</themekey>
+            </theme>
+            <place>
+                <placekt>None</placekt>
+                <placekey>District of Columbia</placekey>
+                <placekey>DCGIS</placekey>
+                <placekey>DC GIS</placekey>
+                <placekey>DC</placekey>
+                <placekey>Washington</placekey>
+                <placekey>D.C.</placekey>
+            </place>
+        </keywords>
+        <accconst>Other Constraints</accconst>
+        <useconst>This work is licensed under a Creative Commons Attribution 4.0 International License.</useconst>
+        <ptcontac>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>US Postal Service</cntorg>
+                </cntorgp>
+            </cntinfo>
+        </ptcontac>
+        <ptcontac>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Office of the Chief Technology Officer</cntorg>
+                    <cntper>GIS Data Coordinator</cntper>
+                </cntorgp>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>200 I Street SE, 5th Floor</address>
+                    <city>Washington</city>
+                    <state>DC</state>
+                    <postal>20003</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>(202) 727-2277</cntvoice>
+                <cntfax>(202) 727-6857</cntfax>
+                <cntemail>dcgis@dc.gov</cntemail>
+                <hours>8:30 am - 5 pm</hours>
+            </cntinfo>
+        </ptcontac>
+        <datacred>US Postal Service</datacred>
+        <native>Esri ArcGIS 13.0.2.36056</native>
+    </idinfo>
+    <dataqual>
+        <attracc>
+            <attraccr>Data believed to be complete and accurate as of the time period cited. Subject to change. Not validated by source and/or responsible agency. Staff compared the MAR address point to the Zip Code polygons noting the following errors and discrepancies: 1) address points that do not fall in the correct zipcode 2) zipcode polygons that did not follow designated features, such as street centerlines, alleys, and vector property lot lines. Staff also used the USPS website to research and verify zip codes by address. Topology was used to ensure no overlaps or gaps existed between zip codes. Staff ensured the new unique zip codes were correctly assigned and mapped.</attraccr>
+        </attracc>
+        <logic>Not validated by source and/or responsible agency.</logic>
+        <complete>Data believed to be complete and accurate, subject to change. Digital version compared with original source data for accuracy and completeness. In process of validation by source and/or responsible agency.</complete>
+        <posacc>
+            <horizpa>
+                <horizpar>The snapbase and vector property map data was used to construct most of the zip codes. Planimetrics compose most of the snapbase. They were captured at a 1:1000 map scale accuracy (well defined points with .83 ft). Since the vector property map is best-fitted to the planimetrics, it is close but not as accurate as the planimetrics.</horizpar>
+            </horizpa>
+        </posacc>
+        <posacc>
+            <vertacc>
+                <vertaccr>N/A</vertaccr>
+            </vertacc>
+        </posacc>
+        <lineage>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20010101</pubdate>
+                        <title>DC Property View</title>
+                    </citeinfo>
+                </srccite>
+                <srcscale>24000</srcscale>
+                <typesrc>None</typesrc>
+                <srccitea>DC Property View</srccitea>
+                <srccontr>boundaries</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20010101</pubdate>
+                        <title>Zip Code directory</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>hardcopyPaper</typesrc>
+                <srccitea>Zip Code directory</srccitea>
+                <srccontr>attributes</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20050101</pubdate>
+                        <title>Medicaid Recipients and Uninsured Population</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srccitea>Medicaid Recipients and Uninsured Population</srccitea>
+                <srccontr>attribution</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20050101</pubdate>
+                        <title>Address Information Systems Zip + 4 by State: District of Columbia</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srccitea>Address Information Systems Zip + 4 by State: District of Columbia</srccitea>
+                <srccontr>location</srccontr>
+            </srcinfo>
+            <srcinfo>
+                <srccite>
+                    <citeinfo>
+                        <pubdate>20130101</pubdate>
+                        <title>Smarty Streets</title>
+                    </citeinfo>
+                </srccite>
+                <typesrc>None</typesrc>
+                <srccitea>Smarty Streets</srccitea>
+            </srcinfo>
+            <procstep>
+                <procdesc>The Address points from the Master Address Repository (MAR) were matched against the US Postal Service Address Information System (AIS) Zip+4 data product. The Zip+4 data contained 5 digit zip codes for known postal addresses in DC. Staff developed a custom visual basic, ArcObjects program to assign the addresses in the MAR with the 5 digit Zip Code from AIS Zip+4 data, matching on address. The program successfully matched and assigned 91% of the addresses in the MAR. Zip codes were originally created using centerlines. Using the MAR points with assigned zip codes, staff recreated and moved the zip code boundaries where zip codes occurred on both sides of the streets. The zipcode boundaries were snapped to the snapbase, alleyways, and vector property lot lines. New unique zip codes were added to the original zip code boundaries. PO box zip codes were created where the respective post office is located. After QA/QC, staff updated zip code boundaries based on error resolution and research findings. Several new unique zip code polygons were created and deleted as well.</procdesc>
+                <proccont>
+                    <cntinfo>
+                        <cntorgp>
+                            <cntorg>Office of the Chief Technology Officer</cntorg>
+                            <cntper>GIS Data Coordinator</cntper>
+                        </cntorgp>
+                        <cntaddr>
+                            <addrtype>mailing and physical</addrtype>
+                            <address>441 4th st NW, Suite 930 South</address>
+                            <city>Washington</city>
+                            <state>DC</state>
+                            <postal>20001</postal>
+                            <country>US</country>
+                        </cntaddr>
+                        <cntfax>202-727-5660</cntfax>
+                        <cntemail>dcgis@dc.gov</cntemail>
+                        <hours>8:30am - 5:30pm</hours>
+                    </cntinfo>
+                </proccont>
+            </procstep>
+            <procstep>
+                <procdesc>Medicaid recipient and uninsured population data was added from data provided by the DC Department of Mental Health.</procdesc>
+                <proccont>
+                    <cntinfo>
+                        <cntorgp>
+                            <cntorg>Office of the Chief Technology Officer</cntorg>
+                            <cntper>GIS Data Coordinator</cntper>
+                        </cntorgp>
+                        <cntaddr>
+                            <addrtype>mailing and physical</addrtype>
+                            <address>441 4th St NW, Suite 930 South</address>
+                            <city>Washington</city>
+                            <state>DC</state>
+                            <postal>20001</postal>
+                            <country>US</country>
+                        </cntaddr>
+                        <cntfax>202-727-5660</cntfax>
+                        <cntemail>dcgis@dc.gov</cntemail>
+                        <hours>8:30am - 5:30pm</hours>
+                    </cntinfo>
+                </proccont>
+            </procstep>
+            <procstep>
+                <procdesc>Zip code lines were identified from existing shapefiles from Spatial Systems Associates. These were intersected with the SIS street center line, transferring attributes to individual arcs. Some arcs remained unattributed, since they crossed zip code boundaries. These arcs were hand attributed and verified from the published USPS zip code list. Polygons were then created from these lines. Attribute data was provided by United States Postal Service publications and an additional URL from the EPA Enviromapper website.</procdesc>
+                <procdate>20010806</procdate>
+                <proccont>
+                    <cntinfo>
+                        <cntorgp>
+                            <cntorg>D.C. Office of the Chief Technology Officer</cntorg>
+                            <cntper>GIS Data Coordinator</cntper>
+                        </cntorgp>
+                        <cntaddr>
+                            <addrtype>mailing and physical</addrtype>
+                            <address>441 4th St NW, Suite 930 South</address>
+                            <city>Washington</city>
+                            <state>DC</state>
+                            <postal>20001</postal>
+                            <country>US</country>
+                        </cntaddr>
+                        <cntvoice>(202) 727-1761</cntvoice>
+                        <cntfax>(202) 727-5660</cntfax>
+                        <cntemail>dcgis@dc.gov</cntemail>
+                        <hours>8:30 am - 5:00 pm</hours>
+                    </cntinfo>
+                </proccont>
+            </procstep>
+            <procstep>
+                <procdesc>Staff obtained a list of zip codes from the US Postal Services and updated the zip code layer. For unique zip codes, those assigned to buildings, agencies, etc, staff used the USPS website and web research to determine where the zip code was located. If the USPS website indicated that an address had a unique zip code as its primary zip code, the bulding polygon containing the address point was captured. If the unique zip code was not the primary zip code, a polygon was drawn inside the building polygon.</procdesc>
+                <procdate>20080315</procdate>
+                <proccont>
+                    <cntinfo>
+                        <cntorgp>
+                            <cntorg>OCTO</cntorg>
+                        </cntorgp>
+                    </cntinfo>
+                </proccont>
+            </procstep>
+            <procstep>
+                <procdesc>Merged zip codes 20336 and 20332 with 20032. Resolved topology errors.</procdesc>
+                <procdate>20090325</procdate>
+                <proccont>
+                    <cntinfo>
+                        <cntorgp>
+                            <cntorg>OCTO</cntorg>
+                        </cntorgp>
+                    </cntinfo>
+                </proccont>
+            </procstep>
+            <procstep>
+                <procdesc>Updated a small part of the zip code with alterations based on zip code information acquired from smarty streets data. The DC address repository was run against the smarty streets data to geenerate zip code information at the address point level. This data was compared against the original zip code file and changes were made based on the exceptions.</procdesc>
+                <procdate>20130704</procdate>
+                <proccont>
+                    <cntinfo>
+                        <cntorgp>
+                            <cntorg>OCTO</cntorg>
+                        </cntorgp>
+                    </cntinfo>
+                </proccont>
+            </procstep>
+            <procstep>
+                <procdesc>Removed multiple fields that were no longer useful, Deleted and created Unique Zipcodes as the Government Agency changed locations, Adjusted some Standard Zipcodes as needed.  Just a few changes here.</procdesc>
+                <procdate>20221014</procdate>
+            </procstep>
+        </lineage>
+    </dataqual>
+    <spdoinfo>
+        <direct>Vector</direct>
+        <ptvctinf>
+            <sdtsterm>
+                <sdtstype>GT-polygon composed of chains</sdtstype>
+                <ptvctcnt>172</ptvctcnt>
+            </sdtsterm>
+        </ptvctinf>
+    </spdoinfo>
+    <eainfo>
+        <detailed>
+            <enttyp>
+                <enttypl>DCGIS.ZipCodePly</enttypl>
+            </enttyp>
+            <attr>
+                <attrlabl>TYPE</attrlabl>
+                <attrdef>Zip code type</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>Shape</attrlabl>
+                <attrdef>Feature geometry.</attrdef>
+                <attrdefs>ESRI</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Coordinates defining the features.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>ZIPCODE</attrlabl>
+                <attrdef>Zip Code value</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>GIS_ID</attrlabl>
+                <attrdef>OCTO GIS sequential identifier</attrdef>
+                <attrdefs>ESRI</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Sequential unique whole numbers that are automatically generated.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>OBJECTID</attrlabl>
+                <attrdef>Internal feature number.</attrdef>
+                <attrdefs>ESRI</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Sequential unique whole numbers that are automatically generated.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>ZIP_CODE_TEXT</attrlabl>
+                <attrdef>Zip code text format</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>NAME</attrlabl>
+                <attrdef>Name of feature or agency the Zip Code represents.</attrdef>
+                <attrdefs>ESRI</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Coordinates defining the features.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE</attrlabl>
+                <attrdef>Feature geometry.</attrdef>
+                <attrdefs>ESRI</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Coordinates defining the features.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>GlobalID</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>Creator</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>Created</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>Editor</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>Edited</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>SE_ANNO_CAD_DATA</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE.AREA</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE.LEN</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>WEB_URL</attrlabl>
+                <attrdef>Web Link URL</attrdef>
+                <attrdefs>ESRI</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Positive real numbers that are automatically generated.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+        </detailed>
+    </eainfo>
+    <distinfo>
+        <distrib>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Office of the Chief Technology Officer</cntorg>
+                    <cntper>GIS Data Coordinator</cntper>
+                </cntorgp>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>200 I Street SE, 5th Floor</address>
+                    <city>Washington</city>
+                    <state>DC</state>
+                    <postal>20003</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>(202) 727-2277</cntvoice>
+                <cntfax>(202) 727-6857</cntfax>
+                <cntemail>dcgis@dc.gov</cntemail>
+                <hours>8:30 am - 5 pm</hours>
+            </cntinfo>
+        </distrib>
+        <distliab>See access and use constraints information.</distliab>
+        <custom>DC datasets can be downloaded from "http://opendata.dc.gov".</custom>
+    </distinfo>
+    <metainfo>
+        <metd>20221014</metd>
+        <metrd>02/03/06</metrd>
+        <metc>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>D.C. Office of the Chief Technology Officer</cntorg>
+                    <cntper>GIS Data Coordinator</cntper>
+                </cntorgp>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>200 I Street SE, 5th Floor</address>
+                    <city>Washington</city>
+                    <state>DC</state>
+                    <postal>20003</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntfax>(202) 727-5660</cntfax>
+                <cntemail>dcgis@dc.gov</cntemail>
+                <hours>8:30 am - 5 pm</hours>
+            </cntinfo>
+        </metc>
+        <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+        <metstdv>FGDC-STD-001-1998</metstdv>
+        <mettc>local time</mettc>
+    </metainfo>
+</metadata>
