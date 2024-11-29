@@ -3,3 +3,68 @@ title: "Untitled"
 format: html
 ---
 
+```{python}
+#Packages
+import pandas as pd 
+import os  
+import geopandas as gpd 
+import pandas as pd
+import matplotlib.pyplot as plt
+import altair as alt
+import json
+```
+
+```{python}
+#Reading in heat data + cooling centers data + ward data 
+file_path = "/Users/mithilaiyer/Documents/GitHub/final_project/shp/Heat_Sensitivity_Exposure_Index.shp"
+heat_dc = gpd.read_file(file_path)
+sample_path = "/Users/mithilaiyer/Documents/GitHub/final_project/shp/Cooling_Centers_-_District_of_Columbia.shp"
+cc_dc = gpd.read_file(sample_path)
+```
+
+
+```{python}
+#Scatterplot 
+cc_dc.plot(marker='o', color = "green", figsize=(10,8), alpha=0.5)
+```
+
+
+```{python}
+#Check CRS 
+print(cc_dc.crs)
+print(heat_dc.crs)
+#Reproject cc_dc to the same CRS
+cc_dc = cc_dc.to_crs(heat_dc.crs)
+```
+
+```{python}
+#Combination - HEI 
+#Figure
+fig, ax = plt.subplots(figsize=(10, 8))
+
+#Chloropleth
+heat_dc.plot(column='HEI', ax=ax, legend=True,
+             cmap='viridis',  
+             linewidth=0.8, edgecolor='0.8', alpha=0.7)
+
+#Overlaying
+cc_dc.plot(marker='o', color='green', ax=ax, alpha=0.5, markersize=50)
+
+# Add a title to the plot
+ax.set_title("HEI and Cooling Centers Accessibility", fontsize=16)
+
+plt.show()
+```
+
+```{python}
+#Combination - Treecover  
+fig, ax = plt.subplots(figsize=(10, 8))
+
+heat_dc.plot(column='P_TREECOVE', ax=ax, legend=True,
+             cmap='Greens',
+             linewidth=0.8, edgecolor='0.8', alpha=0.7)
+
+cc_dc.plot(marker='o', color='red', ax=ax, alpha=0.5, markersize=50)
+ax.set_title("Tree Cover and Cooling Centers Accessibility", fontsize=16)
+plt.show()
+```
