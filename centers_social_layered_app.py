@@ -7,23 +7,40 @@ from matplotlib.patches import Patch
 import numpy as np
 import os
 
-#Load and clean datasets
+# ========================================================
+# Loading Datasets & Cleaning
+# ========================================================
+# Yuna
 path = "/Users/yunabaek/Desktop/3. Python II/final_project/Data"
+# Sumner
+# path = r"C:\Users\12019\OneDrive - The University of Chicago\Documents\GitHub\final_project\Data\"
+# Mithila
+# path = "/Users/mithilaiyer/Documents/GitHub/final_project/shp"
 
+# Cooling center
 centers_fp = os.path.join(path, "Cooling/Cooling_Centers_-_District_of_Columbia.shp")
 cooling_centers = gpd.read_file(centers_fp)
 clean_cc = cooling_centers[(cooling_centers["USER_Open_"] == "All") & (~cooling_centers["USER_Hours"].str.contains('closed', case=False, na=False))]
-
 empty_DC = gpd.read_file(os.path.join(path, "Wards_from_2022/Wards_from_2022.shp"))
 
+# Heat data + cooling centers data + ward data 
+heat_dc = os.path.join(path, "Heat_Sensitivity_Exposure_Index.shp")
+cc_dc = os.path.join(path, "Cooling_Centers_-_District_of_Columbia.shp")
+wards_dc = os.path.join(path, "Wards_from_2022.shp")
+heat_dc['ASTHMA'] = heat_dc['ASTHMA'].round(1)
+cc_dc.plot(marker='o', color = "green", figsize=(10,8), alpha=0.5)
+cc_dc = cc_dc.to_crs(heat_dc.crs)
+#Variable cleaning
+heat_dc['HSI'] = heat_dc['HSI'].apply(lambda x: x if str(x).startswith('0') else np.nan)
+heat_dc['ASTHMA'] = heat_dc['ASTHMA'].round(1)
 
-# poverty, elderly
+# POC, elderly
 acs_shp = gpd.read_file(os.path.join(path, "ACS_5-Year_Demographic_Characteristics_DC_Census_Tract/ACS_5-Year_Demographic_Characteristics_DC_Census_Tract.shp"))
 acs_shp = acs_shp.to_crs(empty_DC.crs)
 acs_shp['poc'] = (acs_shp['DP05_0033E'] - acs_shp['DP05_0079E']) / acs_shp['DP05_0033E']
 acs_shp['elderly'] = acs_shp['DP05_0024E'] / acs_shp['DP05_0001E']
 
-# income / poverty, disability
+# Income, disability
 social_shp = gpd.read_file(os.path.join(path,"ACS_5-Year_Social_Characteristics_DC_Census_Tract/ACS_5-Year_Social_Characteristics_DC_Census_Tract.shp"))
 social_shp['disability'] = social_shp['DP02_0072E'] / social_shp['DP02_0071E']
 
@@ -34,10 +51,14 @@ clean_cc = cooling_centers[(cooling_centers["USER_Open_"] == "All") & (~cooling_
 cc_types = clean_cc["USER_Type"].unique().tolist()
 types_select = ["All"] + cc_types
 
-
 #Create a color map for each CC type option
 color_map = plt.get_cmap("tab10")
 type_colors = {c_type: color_map(i / len(cc_types)) for i, c_type in enumerate(cc_types)}
+
+
+# ========================================================
+# Creating Shiny App
+# ========================================================
 
 app_ui = ui.page_sidebar(
     ui.sidebar(
@@ -47,7 +68,8 @@ app_ui = ui.page_sidebar(
             choices={
                 "poc": "People of Color",
                 "elderly": "Elderly Population",
-                "disability": "Population with Disabilities"
+                "disability": "Population with Disabilities",
+                "asthma": "Asthma"
             },
             selected="poc"
         ),
@@ -80,6 +102,29 @@ def server(input, output, session):
             return clean_cc.iloc[0:0]
         else: 
             return clean_cc[clean_cc["USER_Type"].isin(input.center_type())]
+
+    # @render.plot
+    # def environ_plot():
+    #     fig, ax = plt.subplots(figsize=(12, 10))
+    #     empty_DC.plot(ax=ax, edgecolor="black", facecolor="none", label="Wards")
+
+    #     # Ensure CRS alignment
+    #     center_subset_fix = center_subset().to_crs(empty_DC.crs)
+
+    #     # Plot cooling centers with conditional coloring
+    #     if "All" in input.center_type(): 
+    #         for c_type, color in type_colors.items(): 
+    #             subset = center_subset_fix[center_subset_fix["USER_Type"] == c_type]
+    #             subset.plot(ax=ax, alpha=0.7, color=color, marker="o", label=c_type, legend=True)
+    #     else:
+    #         for c_type in input.center_type(): 
+    #             subset = center_subset_fix[center_subset_fix["USER_Type"] == c_type]
+    #             subset.plot(ax=ax, alpha=0.7, color=type_colors[c_type], marker="o", label=c_type, legend=True)
+
+    #     ax.set_title(f'Cooling Centers by Type', fontsize=14)
+    #     ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.1), ncol=1, fontsize="small")
+
+    #     return fig
 
     # Unified layered plot
     @render.plot
@@ -132,6 +177,23 @@ def server(input, output, session):
                 linewidth=0.2
             )
             ax.set_title('Population with Disabilities', fontsize=12, fontweight='bold')
+
+        elif selected_plot == "asthma":
+            #Asthma with ward numbers 
+            heat_dc.plot(column='ASTHMA', ax=ax, legend=True,
+                        cmap='Reds',
+                        linewidth=0.8, edgecolor='0.8', alpha=0.7)
+
+            cc_dc.plot(marker='o', color='red', ax=ax, alpha=0.5, markersize=50)
+            wards_dc.plot(edgecolor="black", facecolor="none", ax=ax, linewidth=1)
+
+            wards_dc['centroid'] = wards_dc.geometry.centroid
+
+            for idx, row in wards_dc.iterrows():
+                centroid_x, centroid_y = row['centroid'].x, row['centroid'].y
+                ax.text(centroid_x, centroid_y, str(row['WARD']), fontsize=14, ha='center', color='black', fontweight='bold')
+
+            ax.set_title("Asthma and Cooling Centers Accessibility by Ward", fontsize=16)
 
         # Overlay ward boundaries
         empty_DC.plot(
