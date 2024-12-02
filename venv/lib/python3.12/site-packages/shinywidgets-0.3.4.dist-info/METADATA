@@ -1,0 +1,59 @@
+Metadata-Version: 2.1
+Name: shinywidgets
+Version: 0.3.4
+Summary: Render ipywidgets in Shiny applications
+Home-page: https://github.com/rstudio/py-shinywidgets
+Author: Carson Sievert
+Author-email: carson@rstudio.com
+License: MIT
+Project-URL: Bug Tracker, https://github.com/rstudio/py-shinywidgets/issues
+Project-URL: Documentation, https://github.com/rstudio/py-shinywidgets/
+Project-URL: Source Code, https://github.com/rstudio/py-shinywidgets/
+Platform: any
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: ipywidgets>=7.6.5
+Requires-Dist: jupyter-core
+Requires-Dist: shiny>=0.6.1.9005
+Requires-Dist: python-dateutil>=2.8.2
+Provides-Extra: dev
+Requires-Dist: black>=23.1.0; extra == "dev"
+Requires-Dist: isort>=5.11.2; extra == "dev"
+Requires-Dist: pyright>=1.1.284; extra == "dev"
+Requires-Dist: wheel; extra == "dev"
+Requires-Dist: flake8==3.9.2; python_version <= "3.7" and extra == "dev"
+Requires-Dist: flake8>=6.0.0; python_version > "3.7" and extra == "dev"
+Provides-Extra: test
+Requires-Dist: pytest>=6.2.4; extra == "test"
+
+shinywidgets
+================
+
+Render [ipywidgets](https://ipywidgets.readthedocs.io/en/stable/) inside a
+[Shiny](https://shiny.rstudio.com/py) (for Python) app.
+
+See the [Jupyter Widgets](https://shiny.rstudio.com/py/docs/ipywidgets.html) article on the Shiny for Python website for more details.
+
+## Installation
+
+```sh
+pip install shinywidgets
+```
+
+## Development
+
+If you want to do development on `{shinywidgets}`, run:
+
+```sh
+pip install -e ".[dev,test]"
+cd js && yarn watch
+```

@@ -27,39 +27,24 @@ import matplotlib.pyplot as plt
 
 ```{python}
 path = "/Users/yunabaek/Desktop/3. Python II/final_project/Data"
-
-acs5_df = pd.read_csv(os.path.join(path, "ACS_5-Year_Demographic_Characteristics_DC_Census_Tract.csv"))
-
+# poverty, elderly, disability
 acs_shp = gpd.read_file(os.path.join(path, "ACS_5-Year_Demographic_Characteristics_DC_Census_Tract/ACS_5-Year_Demographic_Characteristics_DC_Census_Tract.shp"))
-```
 
-```{python}
-social_df = pd.read_csv(os.path.join(path,
-"ACS_5-Year_Social_Characteristics_DC_Census_Tract.csv"))
-
+# income / poverty
 social_shp = gpd.read_file(os.path.join(path,"ACS_5-Year_Social_Characteristics_DC_Census_Tract/ACS_5-Year_Social_Characteristics_DC_Census_Tract.shp"))
 ```
 
-POC
-DP05_0033E = RACE: Total population
-DP05_0079E = HISPANIC OR LATINO AND RACE: Total population: Not Hispanic or Latino: White alone
 ```{python}
-# Compute 'poc' as the ratio of the difference between 'DP05_0033E' and 'DP05_0079E' to 'DP05_0033E'
-acs_shp['poc'] = (acs_shp['DP05_0033E'] - acs_shp['DP05_0079E']) / acs_shp['DP05_0033E']
+empty_DC = gpd.read_file(os.path.join(path, "Wards_from_2022/Wards_from_2022.shp"))
 ```
 
+POC
 ```{python}
-fig, ax = plt.subplots(figsize=(11, 8))
-poc_plot = acs_shp.plot(
-    column='poc', 
-    legend=True,
-    cmap='YlGnBu',
-    legend_kwds={'label': 'Proportion', 'orientation': 'horizontal'},
-    ax=ax
-)
-ax.set_axis_off()
-ax.set_title('People of Color')
-plt.show()
+# Compute 'poc' as the ratio of the difference between 'DP05_0033E' and 'DP05_0079E' to 'DP05_0033E'
+# DP05_0033E = RACE: Total population
+# DP05_0079E = HISPANIC OR LATINO AND RACE: Total population: Not Hispanic or Latino: White alone
+
+acs_shp['poc'] = (acs_shp['DP05_0033E'] - acs_shp['DP05_0079E']) / acs_shp['DP05_0033E']
 ```
 
 ```{python}
@@ -105,15 +90,15 @@ poc_plot = acs_ward.plot(
     legend_kwds={
         'label': 'Proportion',
         'orientation': 'horizontal',
-        'shrink': 0.5,  # Shrink the color bar
-        'pad': 0.05  # Add space between the color bar and the map
+        'shrink': 0.5, 
+        'pad': 0.05 
     },
     ax=ax,
     edgecolor='black',
     linewidth=0.2
 )
 
-ax.set_axis_off()  # Remove axis
+ax.set_axis_off() 
 ax.set_title('People of Color', fontsize=16, fontweight='bold', pad=15)
 
 plt.tight_layout()
@@ -141,7 +126,6 @@ ax.set_title("Cooling Centers by Type", fontsize=16)
 plt.show()
 ```
 
-
 ```{python}
 #Next, plot out the empty ward map 
 empty_DC = gpd.read_file(os.path.join(path, "Wards_from_2022/Wards_from_2022.shp"))
@@ -152,7 +136,6 @@ plt.title("DC Empty Map", fontsize=14)
 plt.show()
 
 ```
-
 
 ```{python}
 #Map both of the graphs on top of one another
@@ -208,7 +191,6 @@ plt.tight_layout()
 
 # Show the final map with all layers
 plt.show()
-
 
 fig.savefig("layered_pocward.png", dpi=300, bbox_inches='tight')
 ```
@@ -281,6 +263,7 @@ plt.tight_layout()
 plt.show()
 ```
 
+
 Poverty / Low-income
 
 ```{python}
@@ -351,7 +334,6 @@ legend_kwds={'label': 'Population',
 
 Poverty status based on Income level
 
-
 ```{python}
 income_df = pd.read_csv(os.path.join(path, "ACSST5Y2022.S1901-2024-11-27T173227.csv"))
 income_df['ZIPCODE'] = None
@@ -407,7 +389,8 @@ plt.show()
 
 
 Debugging plot
-
+- Data based on estimates for "10000 and worse" for families
+- Couldn't merge by common variable "geometry" with ward data. 
 ```{python}
 
 # income_merged_shp = cityboundaries_shp.merge(income_df, on='ZIPCODE', how='left')
@@ -432,3 +415,77 @@ plt.show()
 
 ```
 
+
+
+Shiny
+
+```{python}
+from shiny import App, render, ui, reactive
+import matplotlib.pyplot as plt
+import numpy as np
+
+app_ui = ui.page_fluid(
+    ui.panel_title("DC Plots")
+)
+def server(input, output, session):
+@render.plot
+def poc_plot():
+    fig, ax = plt.subplots(figsize=(12, 10))
+    poc_plot = acs_shp.plot(
+        column='poc', 
+        cmap='YlGnBu',
+        legend=True,
+        legend_kwds={
+            'label': 'Proportion',
+            'orientation': 'horizontal',
+            'shrink': 0.5,  # Shrink the color bar
+            'pad': 0.05  # Add space between the color bar and the map
+            },
+            ax=ax,
+        edgecolor='black',
+        linewidth=0.2
+        )
+    ax.set_axis_off()  # Remove axis
+    ax.set_title('People of Color', fontsize=16, fontweight='bold', pad=15)
+
+    plt.tight_layout()
+    return plt
+
+app = App(app_ui, server)
+
+print(acs_shp.crs)
+
+```
+
+
+
+
+Testing app
+
+```{python}
+
+#Load and clean datasets
+path = "/Users/yunabaek/Desktop/3. Python II/final_project/Data"
+
+centers_fp = os.path.join(path, "Cooling/Cooling_Centers_-_District_of_Columbia.shp")
+cooling_centers = gpd.read_file(centers_fp)
+clean_cc = cooling_centers[(cooling_centers["USER_Open_"] == "All") & (~cooling_centers["USER_Hours"].str.contains('closed', case=False, na=False))]
+
+empty_DC = gpd.read_file(os.path.join(path, "Wards_from_2022/Wards_from_2022.shp"))
+
+
+# poverty, elderly, disability
+acs_shp = gpd.read_file(os.path.join(path, "ACS_5-Year_Demographic_Characteristics_DC_Census_Tract/ACS_5-Year_Demographic_Characteristics_DC_Census_Tract.shp"))
+acs_shp['poc'] = (acs_shp['DP05_0033E'] - acs_shp['DP05_0079E']) / acs_shp['DP05_0033E']
+
+# income / poverty
+social_shp = gpd.read_file(os.path.join(path,"ACS_5-Year_Social_Characteristics_DC_Census_Tract/ACS_5-Year_Social_Characteristics_DC_Census_Tract.shp"))
+
+
+#Clean CC dataset
+clean_cc = cooling_centers[(cooling_centers["USER_Open_"] == "All") & (~cooling_centers["USER_Hours"].str.contains('closed', case=False, na=False))]
+
+#Create the CC type options  
+cc_types = clean_cc["USER_Type"].unique().tolist()
+types_select = ["All"] + cc_types
+```
