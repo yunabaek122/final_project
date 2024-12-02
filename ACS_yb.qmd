@@ -1,0 +1,444 @@
+---
+title: "Final Project_ACS Data"
+author: "Yuna Baek"
+date: ""
+format: 
+    pdf:
+      keep-tex: true
+      latex-engine: xelatex
+      include-in-header: 
+        text: |
+          \usepackage{fvextra}
+          \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+          \DefineVerbatimEnvironment{OutputCode}{Verbatim}{breaklines,commandchars=\\\{\}}
+
+execute:
+  eval: true 
+  echo: true
+---
+
+```{python}
+import geopandas as gpd
+import pandas as pd
+import pyogrio
+import os
+import matplotlib.pyplot as plt
+```
+
+```{python}
+path = "/Users/yunabaek/Desktop/3. Python II/final_project/Data"
+
+acs5_df = pd.read_csv(os.path.join(path, "ACS_5-Year_Demographic_Characteristics_DC_Census_Tract.csv"))
+
+acs_shp = gpd.read_file(os.path.join(path, "ACS_5-Year_Demographic_Characteristics_DC_Census_Tract/ACS_5-Year_Demographic_Characteristics_DC_Census_Tract.shp"))
+
+acs_ward = gpd.read_file(os.path.join(path, "ward_ACS_5-Year_Demographic_Characteristics_DC_Ward/ACS_5-Year_Demographic_Characteristics_DC_Ward.shp"))
+```
+
+```{python}
+social_df = pd.read_csv(os.path.join(path,
+"ACS_5-Year_Social_Characteristics_DC_Census_Tract.csv"))
+
+social_shp = gpd.read_file(os.path.join(path,"ACS_5-Year_Social_Characteristics_DC_Census_Tract/ACS_5-Year_Social_Characteristics_DC_Census_Tract.shp"))
+```
+
+POC
+DP05_0033E = RACE: Total population
+DP05_0079E = HISPANIC OR LATINO AND RACE: Total population: Not Hispanic or Latino: White alone
+```{python}
+# Compute 'poc' as the ratio of the difference between 'DP05_0033E' and 'DP05_0079E' to 'DP05_0033E'
+acs_shp['poc'] = (acs_shp['DP05_0033E'] - acs_shp['DP05_0079E']) / acs_shp['DP05_0033E']
+```
+
+```{python}
+# fig, ax = plt.subplots(figsize=(11, 8))
+# poc_plot = acs_shp.plot(
+#     column='poc', 
+#     legend=True,
+#     cmap='YlGnBu',
+#     legend_kwds={'label': 'Proportion', 'orientation': 'horizontal'},
+#     ax=ax
+# )
+# ax.set_axis_off()
+# ax.set_title('People of Color')
+# plt.show()
+```
+
+```{python}
+fig, ax = plt.subplots(figsize=(12, 10))
+poc_plot = acs_shp.plot(
+    column='poc', 
+    cmap='YlGnBu',
+    legend=True,
+    legend_kwds={
+        'label': 'Proportion',
+        'orientation': 'horizontal',
+        'shrink': 0.5,  # Shrink the color bar
+        'pad': 0.05  # Add space between the color bar and the map
+    },
+    ax=ax,
+    edgecolor='black',
+    linewidth=0.2
+)
+
+ax.set_axis_off()  # Remove axis
+ax.set_title('People of Color', fontsize=16, fontweight='bold', pad=15)
+
+plt.tight_layout()
+plt.show()
+
+fig.savefig("poc_plot.png", dpi=300, bbox_inches='tight')
+
+```
+
+
+Ward data
+```{python}
+# Compute 'poc' as the ratio of the difference between 'DP05_0033E' and 'DP05_0079E' to 'DP05_0033E'
+acs_ward['poc'] = (acs_ward['DP05_0033E'] - acs_ward['DP05_0079E']) / acs_ward['DP05_0033E']
+```
+
+```{python}
+fig, ax = plt.subplots(figsize=(12, 10))
+poc_plot = acs_ward.plot(
+    column='poc', 
+    cmap='YlGnBu',
+    legend=True,
+    legend_kwds={
+        'label': 'Proportion',
+        'orientation': 'horizontal',
+        'shrink': 0.5,  # Shrink the color bar
+        'pad': 0.05  # Add space between the color bar and the map
+    },
+    ax=ax,
+    edgecolor='black',
+    linewidth=0.2
+)
+
+ax.set_axis_off()  # Remove axis
+ax.set_title('People of Color', fontsize=16, fontweight='bold', pad=15)
+
+plt.tight_layout()
+plt.show()
+```
+
+
+Using Sumner's graphs
+
+```{python}
+cooling_centers = gpd.read_file(os.path.join(path, "Cooling_Centers_-_District_of_Columbia/Cooling_Centers_-_District_of_Columbia.shp"))
+
+#Let's explore the cooling centers first. Not all cooling centers are entirely accessible. Only include low-barrier and day shelters that are accessible to all genders. Eliminate all centers that are closed. 
+clean_cc = cooling_centers[(cooling_centers["USER_Open_"] == "All") & (~cooling_centers["USER_Hours"].str.contains('closed', case=False, na=False))]
+
+#Now plot these
+clean_cc.plot(marker='o', color = "green", figsize=(10,8), alpha=0.5)
+
+#Still seeing some overlap so going to break it out by the different types of centers
+ax = clean_cc.plot(column="USER_Type", figsize=(10,8), legend=True, cmap="tab10")
+ax.set_title("Cooling Centers by Type", fontsize=16)
+plt.show()
+```
+
+
+```{python}
+#Next, plot out the empty ward map 
+empty_DC = gpd.read_file(os.path.join(path, "Wards_from_2022/Wards_from_2022.shp"))
+
+#Plot the empty DC graph 
+empty_DC.plot(edgecolor="black", facecolor="none", figsize=(10,10))
+plt.title("DC Empty Map", fontsize=14)
+plt.show()
+
+```
+
+
+```{python}
+#Map both of the graphs on top of one another
+clean_cc = clean_cc.to_crs(empty_DC.crs)
+
+fig, ax = plt.subplots(figsize=(10,10))
+empty_DC.plot(ax=ax, edgecolor="black", facecolor="none", label="Layer 1")
+clean_cc.plot(ax=ax, column="USER_Type", alpha=0.7, legend=True, cmap="tab10", label="Layer2")
+
+plt.title("All Accessible Cooling Centers by Ward")
+cooling_plot = plt.show()
+cooling_plot + acs_ward_plot
+```
+
+```{python}
+# Ensure both datasets share the same CRS
+clean_cc = clean_cc.to_crs(empty_DC.crs)
+
+# Create a new figure with a single axis
+fig, ax = plt.subplots(figsize=(12, 10))
+
+# Plot Layer 1 (empty_DC) - this will be the base layer
+empty_DC.plot(ax=ax, edgecolor="black", facecolor="none", label="Layer 1")
+
+# Plot Layer 2 (clean_cc) on top of Layer 1
+clean_cc.plot(ax=ax, column="USER_Type", alpha=0.7, legend=False, cmap="tab10", label="Layer 2")
+
+# Plot Layer 3 (acs_ward) on top of the first two layers
+acs_ward.plot(
+    column='poc', 
+    cmap='YlGnBu',
+    legend=True,  # Set to True so the legend is displayed for this layer
+    legend_kwds={
+        'label': 'Proportion',
+        'orientation': 'horizontal',
+        'shrink': 0.5,  # Shrink the color bar
+        'pad': 0.05  # Add space between the color bar and the map
+    },
+    ax=ax,  # Use the same ax as the first two plots
+    edgecolor='black',
+    linewidth=0.2
+)
+
+# Add a title for the map
+ax.set_title("All Accessible Cooling Centers by Ward", fontsize=16, fontweight="bold", pad=15)
+
+# Optionally, remove the axis for better map aesthetics
+ax.set_axis_off()
+
+# Display the final map
+plt.tight_layout()
+plt.show()
+
+```
+
+```{python}
+#Proportions Table for Centers
+counts = clean_cc["USER_Type"].value_counts()
+percentages = counts / counts.sum() * 100
+centers_table = pd.DataFrame({"Counts": counts, "Percentage": percentages.round(2)})
+
+print(centers_table)
+
+```
+
+
+
+
+
+Elderly
+```{python}
+acs_shp['elderly'] = acs_shp['DP05_0024E'] / acs_shp['DP05_0001E']
+```
+```{python}
+fig, ax = plt.subplots(figsize=(12, 10))
+elderly_plot = acs_shp.plot(
+    column='elderly', 
+    cmap='YlGnBu',
+    legend=True,
+    legend_kwds={
+        'label': 'Proportion',
+        'orientation': 'horizontal',
+        'shrink': 0.5,
+        'pad': 0.05
+    },
+    ax=ax,
+    edgecolor='black',
+    linewidth=0.2
+)
+
+ax.set_axis_off()
+ax.set_title('Population of Older Adults', fontsize=16, fontweight='bold', pad=15)
+
+plt.tight_layout()
+plt.show()
+```
+
+
+Disability
+
+```{python}
+social_shp['disability'] = social_shp['DP02_0072E'] / social_shp['DP02_0071E']
+```
+```{python}
+disability_plot = social_shp.plot(column = 'disability', legend=True,
+cmap='viridis',
+legend_kwds={'label': 'Population',
+'orientation': 'horizontal'}
+)
+```
+
+```{python}
+fig, ax = plt.subplots(figsize=(12, 10))
+disability_plot = social_shp.plot(
+    column='disability', 
+    cmap='YlGnBu',
+    legend=True,
+    legend_kwds={
+        'label': 'Proportion',
+        'orientation': 'horizontal',
+        'shrink': 0.5,
+        'pad': 0.05
+    },
+    ax=ax,
+    edgecolor='black',
+    linewidth=0.2
+)
+
+ax.set_axis_off()
+ax.set_title('Population with Disabilities', fontsize=16, fontweight='bold', pad=15)
+
+plt.tight_layout()
+plt.show()
+```
+
+Poverty / Low-income
+
+```{python}
+poverty_df = pd.read_csv(os.path.join(path, "ACSST5Y2022.S1701-2024-11-21T005208.csv"))
+
+poverty_df.rename(columns={'District of Columbia!!Percent below poverty level!!Estimate': 'pct_below_poverty'}, inplace=True)
+poverty_df['ZIPCODE'] = None
+```
+
+```{python}
+for i in range(0, len(poverty_df), 7):
+    # Extract the ZIP code from row 0 of each 8-row block
+    zipcode = poverty_df.iloc[i, 0]
+    poverty_df.loc[i:i+6, 'ZIPCODE'] = zipcode 
+
+# Keep only every 6th row starting from the first row
+poverty_df = poverty_df.iloc[6::7].reset_index(drop=True)
+
+# Extract ZipCode
+poverty_df['ZIPCODE'] = poverty_df['ZIPCODE'].str.split().str[-1]
+poverty_df['ZIPCODE'] = poverty_df['ZIPCODE'].astype(int)
+
+# Renaming
+poverty_df = poverty_df.rename(columns={'Population for whom poverty status is determined': 'poverty'})
+```
+
+```{python}
+zip_shp = gpd.read_file(os.path.join(path, "Zip_Codes/Zip_Codes.shp"))
+
+poverty_merged_shp = zip_shp.merge(poverty_df, on='ZIPCODE', how='left')
+
+# poverty_merged_shp = ward_shp.merge(poverty_merged_shp, on='geometry', how='left')
+```
+
+```{python}
+
+fig, ax = plt.subplots(figsize=(12, 10))
+poverty_plot = poverty_merged_shp.plot(
+    column='poverty', 
+    cmap='YlGnBu',
+    legend=True,
+    legend_kwds={
+        'label': 'Proportion',
+        'orientation': 'horizontal',
+        'shrink': 0.5,
+        'pad': 0.05
+    },
+    ax=ax,
+    edgecolor='black',
+    linewidth=0.2
+)
+
+ax.set_axis_off()
+ax.set_title('Low Income Population', fontsize=16, fontweight='bold', pad=15)
+
+plt.tight_layout()
+plt.show()
+
+```
+
+
+```{python}
+poverty_plot = poverty_merged_shp.plot(column = 'poverty', legend=True,
+cmap='viridis',
+legend_kwds={'label': 'Population',
+'orientation': 'horizontal'}
+)
+```
+
+
+Poverty status based on Income level
+
+
+```{python}
+income_df = pd.read_csv(os.path.join(path, "ACSST5Y2022.S1901-2024-11-27T173227.csv"))
+income_df['ZIPCODE'] = None
+income_df = income_df.iloc[9:].reset_index(drop=True)
+```
+
+```{python}
+for i in range(0, len(income_df), 9):
+    # Extract the ZIP code from row 0 of each 8-row block
+    zipcode = income_df.iloc[i, 0]
+    income_df.loc[i:i+6, 'ZIPCODE'] = zipcode 
+
+# Keep only every 6th row starting from the first row
+income_df = income_df.iloc[6::9].reset_index(drop=True)
+
+# Extract ZipCode
+income_df['ZIPCODE'] = income_df['ZIPCODE'].str.split().str[-1]
+income_df['ZIPCODE'] = income_df['ZIPCODE'].astype(int)
+
+# Renaming
+income_df = income_df.rename(columns={'Total!!Less than $10,000': 'poverty'})
+```
+
+```{python}
+income_merged_shp = zip_shp.merge(income_df, on='ZIPCODE', how='left')
+```
+
+```{python}
+
+fig, ax = plt.subplots(figsize=(12, 10))
+income_plot = income_merged_shp.plot(
+    column='poverty', 
+    cmap='YlGnBu',
+    legend=True,
+    legend_kwds={
+        'label': 'Proportion',
+        'orientation': 'horizontal',
+        'shrink': 0.5,
+        'pad': 0.05
+    },
+    ax=ax,
+    edgecolor='black',
+    linewidth=0.2
+)
+
+ax.set_axis_off()
+ax.set_title('Low Income Population', fontsize=16, fontweight='bold', pad=15)
+
+plt.tight_layout()
+plt.show()
+```
+
+
+
+Debugging plot
+
+```{python}
+ward_shp = gpd.read_file(os.path.join(path, "Wards_from_2022/Wards_from_2022.shp"))
+```
+
+```{python}
+income_merged_shp = ward_shp.merge(income_df, on='geometry', how='left')
+```
+
+```{python}
+fig, ax = plt.subplots(figsize=(12, 10))
+income_plot = income_merged_shp.plot(
+    column='poverty', 
+    cmap='YlGnBu',
+    ax=ax,
+    edgecolor='black',
+    linewidth=0.2
+)
+
+ax.set_axis_off()
+ax.set_title('Low Income Population', fontsize=16, fontweight='bold', pad=15)
+
+plt.tight_layout()
+plt.show()
+
+```
+
