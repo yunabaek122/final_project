@@ -149,8 +149,6 @@ for idx, row in wards_dc.iterrows():
 plt.show()
 ```
 
-```
-
 ```{python}
 #HSI with ward numbers 
 fig, ax = plt.subplots(figsize=(10, 8))
