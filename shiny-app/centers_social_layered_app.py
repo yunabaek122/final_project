@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from shiny import App, render, ui, reactive
 from matplotlib.colors import ListedColormap
 from matplotlib.patches import Patch
+from matplotlib.ticker import FormatStrFormatter
 import numpy as np
 import os
 
@@ -36,17 +37,15 @@ heat_dc['ASTHMA'] = heat_dc['ASTHMA'].round(1)
 # POC, elderly
 acs_shp = gpd.read_file(os.path.join(path, "ACS_5-Year_Demographic_Characteristics_DC_Census_Tract/ACS_5-Year_Demographic_Characteristics_DC_Census_Tract.shp"))
 acs_shp = acs_shp.to_crs(empty_DC.crs)
-acs_shp['poc'] = (acs_shp['DP05_0033E'] - acs_shp['DP05_0079E']) / acs_shp['DP05_0033E']
-acs_shp['elderly'] = acs_shp['DP05_0024E'] / acs_shp['DP05_0001E']
+acs_shp['poc'] = (acs_shp['DP05_0033E'] - acs_shp['DP05_0079E'])*100 / acs_shp['DP05_0033E']
+acs_shp['elderly'] = acs_shp['DP05_0024E']*100 / acs_shp['DP05_0001E']
 
 # Disability
 social_shp = gpd.read_file(os.path.join(path,"ACS_5-Year_Social_Characteristics_DC_Census_Tract/ACS_5-Year_Social_Characteristics_DC_Census_Tract.shp"))
-social_shp['disability'] = social_shp['DP02_0072E'] / social_shp['DP02_0071E']
+social_shp['disability'] = social_shp['DP02_0072E']*100 / social_shp['DP02_0071E']
 
 # Poverty
-poverty_shp = gpd.read_file(os.path.join(path, "ACS_5-Year_Economic_Characteristics_DC_Ward/ACS_5-Year_Economic_Characteristics_DC_Ward.shp"))
-poverty_shp = poverty_shp.rename(columns={'DP03_0119P': 'poverty'})
-
+poverty_shp = gpd.read_file(os.path.join(path, "cleaned_poverty_ward.shp"))
 
 #Clean CC dataset
 clean_cc = cooling_centers[(cooling_centers["USER_Open_"] == "All") & (~cooling_centers["USER_Hours"].str.contains('closed', case=False, na=False))]
@@ -72,7 +71,7 @@ app_ui = ui.page_sidebar(
             choices={
                 "poc": "People of Color",
                 "elderly": "Elderly Population",
-                "poverty" : "Poverty",
+                "poverty" : "Low Income",
                 "disability": "Population with Disabilities",
                 "asthma": "Asthma"
             },
@@ -172,7 +171,7 @@ def server(input, output, session):
                     color=color,  # Use color from type_colors
                     markersize=40,  # Original size for the dot
                     alpha=1.0,
-                    label=c_type  # Exclude from the legend
+                    label=c_type 
                 )
                 
     def add_legend(ax, selected_df):
@@ -192,15 +191,6 @@ def server(input, output, session):
             title_fontsize="small",
             frameon=False,
         )
-
-    # def customize_colorbar(cbar, vmin, vmax, label):
-    #     """
-    #     Customize color bar by setting ticks, labels, and title.
-    #     """
-    #     cbar.ax.set_title(label, loc="center", fontsize=10, fontweight="bold", pad=10)  # Title for the color bar
-    #     cbar.set_ticks([vmin, vmax])  # Set min and max ticks
-    #     cbar.ax.set_yticklabels([f"{vmin:.1f}", f"{vmax:.1f}"], fontsize=9)  # Adjust tick labels
-
 
     @render.plot
     def environ_plot():
@@ -237,20 +227,21 @@ def server(input, output, session):
 
         if selected_social_plot == "poc":
             acs_shp.plot(column="poc", cmap="YlGnBu", alpha=0.8, legend=True, ax=ax, edgecolor="0.8", linewidth=0.2)
-            ax.set_title("People of Color", fontsize=14, fontweight="bold")
+            ax.set_title("People of Color (%)", fontsize=14, fontweight="bold")
 
         elif selected_social_plot == "poverty":
             poverty_shp.plot(column='poverty', cmap="YlGnBu", legend=True, ax=ax, edgecolor="0.8", linewidth=0.2)
-            ax.set_title("Poverty", fontsize=14, fontweight="bold")
-
+            ax.set_title("Low Income Population (%)", fontsize=14, fontweight="bold")
+            cbar = ax.get_figure().axes[-1]  # Access the colorbar axis
+            cbar.yaxis.set_major_formatter(FormatStrFormatter('%.0f'))
 
         elif selected_social_plot == "elderly":
             acs_shp.plot(column="elderly", cmap="YlGnBu", legend=True, ax=ax, edgecolor="0.8", linewidth=0.2)
-            ax.set_title("Population of Older Adults", fontsize=14, fontweight="bold")
+            ax.set_title("Population of Older Adults (%)", fontsize=14, fontweight="bold")
 
         elif selected_social_plot == "disability":
             social_shp.plot(column="disability", cmap="YlGnBu", legend=True, ax=ax, edgecolor="0.8", linewidth=0.2)
-            ax.set_title("Population with Disabilities", fontsize=14, fontweight="bold")
+            ax.set_title("Population with Disabilities (%)", fontsize=14, fontweight="bold")
 
         elif selected_social_plot == "asthma":
             heat_dc.plot(column="ASTHMA", cmap="Reds", legend=True, ax=ax, edgecolor="0.8", linewidth=0.5)
