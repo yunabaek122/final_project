@@ -294,6 +294,13 @@ poverty_df = poverty_df.rename(columns={'Population for whom poverty status is d
 zip_shp = gpd.read_file(os.path.join(path, "Zip_Codes/Zip_Codes.shp"))
 
 poverty_merged_shp = zip_shp.merge(poverty_df, on='ZIPCODE', how='left')
+
+cleaned_poverty_shp = poverty_merged_shp[['ZIPCODE', 'poverty', 'geometry']]
+cleaned_poverty_shp.to_file("cleaned_poverty.shp")
+
+print(cleaned_poverty_shp['poverty'].dtype) 
+cleaned_poverty_shp['poverty'] = pd.to_numeric(cleaned_poverty_shp['poverty'], errors='coerce')
+
 ```
 
 ```{python}
@@ -329,6 +336,36 @@ cmap='viridis',
 legend_kwds={'label': 'Population',
 'orientation': 'horizontal'}
 )
+```
+
+
+
+Attempt #2
+
+```{python}
+# Step 1: Load the data
+poverty_df = pd.read_csv(os.path.join(path, "ACSST5Y2022.S1701-2024-11-21T005208.csv"))
+
+# Step 2: Filter rows with ZIP code information
+poverty_df = poverty_df[poverty_df['Label (Grouping)'].str.startswith('ZCTA5')]
+
+# Step 3: Extract ZIP codes
+poverty_df['ZIPCODE'] = poverty_df['Label (Grouping)'].str.extract(r'ZCTA5 (\d{5})')[0].astype(int)
+
+# Step 4: Rename the chosen column
+poverty_df.rename(columns={
+    'Population for whom poverty status is determined!!ALL INDIVIDUALS WITH INCOME BELOW THE FOLLOWING POVERTY RATIOS!!50 percent of poverty level': 'poverty_rate'
+}, inplace=True)
+
+# Step 5: Convert to numeric
+poverty_df['poverty_rate'] = poverty_df['poverty_rate'].str.replace(',', '').astype(float, errors='coerce')
+
+# Step 6: Keep only relevant columns
+poverty_cleaned = poverty_df[['ZIPCODE', 'poverty_rate']]
+
+# Verify the cleaned data
+print(poverty_cleaned.head())
+
 ```
 
 
@@ -413,79 +450,4 @@ ax.set_title('Low Income Population', fontsize=16, fontweight='bold', pad=15)
 plt.tight_layout()
 plt.show()
 
-```
-
-
-
-Shiny
-
-```{python}
-from shiny import App, render, ui, reactive
-import matplotlib.pyplot as plt
-import numpy as np
-
-app_ui = ui.page_fluid(
-    ui.panel_title("DC Plots")
-)
-def server(input, output, session):
-@render.plot
-def poc_plot():
-    fig, ax = plt.subplots(figsize=(12, 10))
-    poc_plot = acs_shp.plot(
-        column='poc', 
-        cmap='YlGnBu',
-        legend=True,
-        legend_kwds={
-            'label': 'Proportion',
-            'orientation': 'horizontal',
-            'shrink': 0.5,  # Shrink the color bar
-            'pad': 0.05  # Add space between the color bar and the map
-            },
-            ax=ax,
-        edgecolor='black',
-        linewidth=0.2
-        )
-    ax.set_axis_off()  # Remove axis
-    ax.set_title('People of Color', fontsize=16, fontweight='bold', pad=15)
-
-    plt.tight_layout()
-    return plt
-
-app = App(app_ui, server)
-
-print(acs_shp.crs)
-
-```
-
-
-
-
-Testing app
-
-```{python}
-
-#Load and clean datasets
-path = "/Users/yunabaek/Desktop/3. Python II/final_project/Data"
-
-centers_fp = os.path.join(path, "Cooling/Cooling_Centers_-_District_of_Columbia.shp")
-cooling_centers = gpd.read_file(centers_fp)
-clean_cc = cooling_centers[(cooling_centers["USER_Open_"] == "All") & (~cooling_centers["USER_Hours"].str.contains('closed', case=False, na=False))]
-
-empty_DC = gpd.read_file(os.path.join(path, "Wards_from_2022/Wards_from_2022.shp"))
-
-
-# poverty, elderly, disability
-acs_shp = gpd.read_file(os.path.join(path, "ACS_5-Year_Demographic_Characteristics_DC_Census_Tract/ACS_5-Year_Demographic_Characteristics_DC_Census_Tract.shp"))
-acs_shp['poc'] = (acs_shp['DP05_0033E'] - acs_shp['DP05_0079E']) / acs_shp['DP05_0033E']
-
-# income / poverty
-social_shp = gpd.read_file(os.path.join(path,"ACS_5-Year_Social_Characteristics_DC_Census_Tract/ACS_5-Year_Social_Characteristics_DC_Census_Tract.shp"))
-
-
-#Clean CC dataset
-clean_cc = cooling_centers[(cooling_centers["USER_Open_"] == "All") & (~cooling_centers["USER_Hours"].str.contains('closed', case=False, na=False))]
-
-#Create the CC type options  
-cc_types = clean_cc["USER_Type"].unique().tolist()
-types_select = ["All"] + cc_types
 ```
