@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+    <idinfo>
+        <citation>
+            <citeinfo>
+                <origin/>
+                <pubdate>20240329</pubdate>
+                <title>ACS Economic Characteristics DC Ward</title>
+                <geoform>vector digital data</geoform>
+                <pubinfo>
+                    <pubplace/>
+                    <publish>Office of the Chief Technology Officer</publish>
+                </pubinfo>
+            </citeinfo>
+        </citation>
+        <descript>
+            <abstract>Employment, Commuting, Occupation, Income, Health Insurance, Poverty, and more. This service is updated annually with American Community Survey (ACS) 5-year data. Contact: District of Columbia, Office of Planning. Email: planning@dc.gov. Geography: 2022 Wards (State Legislative Districts [Upper Chamber]). Current Vintage: 2018-2022. ACS Table(s): DP03. Data downloaded from: Census Bureau's API for American Community Survey. Date of API call: January 2, 2024. National Figures: data.census.gov. Please cite the Census and ACS when using this data. Data Note from the Census: Data are based on a sample and are subject to sampling variability. The degree of uncertainty for an estimate arising from sampling variability is represented through the use of a margin of error. The value shown here is the 90 percent margin of error. The margin of error can be interpreted as providing a 90 percent probability that the interval defined by the estimate minus the margin of error and the estimate plus the margin of error (the lower and upper confidence bounds) contains the true value. In addition to sampling variability, the ACS estimates are subject to nonsampling error (for a discussion of nonsampling variability, see Accuracy of the Data). The effect of nonsampling error is not represented in these tables. Data Processing Notes: This layer is updated automatically when the most current vintage of ACS data is released each year, usually in December. The layer always contains the latest available ACS 5-year estimates. It is updated annually within days of the Census Bureau's release schedule. Boundaries come from the US Census TIGER geodatabases. Boundaries are updated at the same time as the data updates (annually), and the boundary vintage appropriately matches the data vintage as specified by the Census. These are Census boundaries with water and/or coastlines clipped for cartographic purposes. For census tracts, the water cutouts are derived from a subset of the 2020 AWATER (Area Water) boundaries offered by TIGER. For state and county boundaries, the water and coastlines are derived from the coastlines of the 500k TIGER Cartographic Boundary Shapefiles. The original AWATER and ALAND fields are still available as attributes within the data table (units are square meters). Field alias names were created based on the Table Shells file available from the American Community Survey Summary File Documentation page. Data processed using R statistical package and ArcGIS Desktop. Margin of Error was not included in this layer but is available from the Census Bureau. Contact the Office of Planning for more information about obtaining Margin of Error values.</abstract>
+            <purpose>This layer contains the most current release of data from the American Community Survey (ACS) about economic characteristics. These are 5-year estimates shown by 2022 Ward boundaries.</purpose>
+        </descript>
+        <status>
+            <update>Annually</update>
+        </status>
+        <spdom>
+            <bounding>
+                <westbc>-77.119862</westbc>
+                <eastbc>-76.909262</eastbc>
+                <northbc>38.995852</northbc>
+                <southbc>38.79159</southbc>
+            </bounding>
+        </spdom>
+        <keywords>
+            <theme>
+                <themekt>None</themekt>
+                <themekey>ACS</themekey>
+                <themekey>American Community Survey</themekey>
+                <themekey>Census Bureau</themekey>
+                <themekey>census tract</themekey>
+                <themekey>commuting</themekey>
+                <themekey>District of Columbia</themekey>
+                <themekey>economic characteristics</themekey>
+                <themekey>employment</themekey>
+                <themekey>health insurance</themekey>
+                <themekey>income</themekey>
+                <themekey>occupation</themekey>
+                <themekey>OP</themekey>
+                <themekey>poverty</themekey>
+                <themekey>Washington DC</themekey>
+            </theme>
+        </keywords>
+        <accconst>Other Constraints</accconst>
+        <useconst>This work is licensed under a Creative Commons Attribution 4.0 International License.</useconst>
+        <ptcontac>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Office of Planning</cntorg>
+                    <cntper>State Data Center</cntper>
+                </cntorgp>
+                <cntpos>Demographic Specialist</cntpos>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>1100 4th Street, SW, Suite 650 East</address>
+                    <city>Washington</city>
+                    <state>DC</state>
+                    <postal>20024</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>(202) 442-7600</cntvoice>
+                <cntfax>(202) 442-7638</cntfax>
+                <cntemail>planning@dc.gov</cntemail>
+                <hours>8:30 am to 5 pm</hours>
+            </cntinfo>
+        </ptcontac>
+        <ptcontac>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Office of the Chief Technology Officer</cntorg>
+                </cntorgp>
+                <cntpos>GIS Data Coordinator</cntpos>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>200 I Street, SE</address>
+                    <city>Washington</city>
+                    <state>DC</state>
+                    <postal>20003</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>(202) 727-2277</cntvoice>
+                <cntfax>(202) 727-6857</cntfax>
+                <cntemail>octo@dc.gov</cntemail>
+                <hours>8:30 am to 5:30 pm</hours>
+            </cntinfo>
+        </ptcontac>
+        <datacred>Office of Planning</datacred>
+        <native>Esri ArcGIS 13.1.3.41833</native>
+    </idinfo>
+    <spdoinfo>
+        <direct>Vector</direct>
+        <ptvctinf>
+            <sdtsterm>
+                <sdtstype>GT-polygon composed of chains</sdtstype>
+                <ptvctcnt>0</ptvctcnt>
+            </sdtsterm>
+        </ptvctinf>
+    </spdoinfo>
+    <eainfo>
+        <detailed>
+            <enttyp>
+                <enttypl>DCGIS.ACS_Economic_DC_Ward</enttypl>
+            </enttyp>
+            <attr>
+                <attrlabl>OBJECTID</attrlabl>
+                <attrdef>Internal feature number.</attrdef>
+                <attrdefs>Esri</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Sequential unique whole numbers that are automatically generated.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE</attrlabl>
+                <attrdef>Feature geometry.</attrdef>
+                <attrdefs>Esri</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Coordinates defining the features.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>GEOID</attrlabl>
+                <attrdef>GEOID</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>NAMELSAD</attrlabl>
+                <attrdef>Current name</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>NAME</attrlabl>
+                <attrdef>NAME</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0001E</attrlabl>
+                <attrdef>EMPLOYMENT STATUS:  Population 16 years and over</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0002E</attrlabl>
+                <attrdef>EMPLOYMENT STATUS:  Population 16 years and over:  In labor force</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0003E</attrlabl>
+                <attrdef>EMPLOYMENT STATUS:  Population 16 years and over:  In labor force:  Civilian labor force</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0004E</attrlabl>
+                <attrdef>EMPLOYMENT STATUS:  Population 16 years and over:  In labor force:  Civilian labor force:  Employed</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0005E</attrlabl>
+                <attrdef>EMPLOYMENT STATUS:  Population 16 years and over:  In labor force:  Civilian labor force:  Unemployed</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0006E</attrlabl>
+                <attrdef>EMPLOYMENT STATUS:  Population 16 years and over:  In labor force:  Armed Forces</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0007E</attrlabl>
+                <attrdef>EMPLOYMENT STATUS:  Population 16 years and over:  Not in labor force</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0008E</attrlabl>
+                <attrdef>EMPLOYMENT STATUS:  Civilian labor force</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0009P</attrlabl>
+                <attrdef>EMPLOYMENT STATUS:  Civilian labor force:  Unemployment Rate</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0010E</attrlabl>
+                <attrdef>EMPLOYMENT STATUS:  Females 16 years and over</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0011E</attrlabl>
+                <attrdef>EMPLOYMENT STATUS:  Females 16 years and over:  In labor force</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0012E</attrlabl>
+                <attrdef>EMPLOYMENT STATUS:  Females 16 years and over:  In labor force:  Civilian labor force</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0013E</attrlabl>
+                <attrdef>EMPLOYMENT STATUS:  Females 16 years and over:  In labor force:  Civilian labor force:  Employed</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0014E</attrlabl>
+                <attrdef>EMPLOYMENT STATUS:  Own children of the householder under 6 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0015E</attrlabl>
+                <attrdef>EMPLOYMENT STATUS:  Own children of the householder under 6 years:  All parents in family in labor force</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0016E</attrlabl>
+                <attrdef>EMPLOYMENT STATUS:  Own children of the householder 6 to 17 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0017E</attrlabl>
+                <attrdef>EMPLOYMENT STATUS:  Own children of the householder 6 to 17 years:  All parents in family in labor force</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0018E</attrlabl>
+                <attrdef>COMMUTING TO WORK:  Workers 16 years and over</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0019E</attrlabl>
+                <attrdef>COMMUTING TO WORK:  Workers 16 years and over:  Car, truck, or van -- drove alone</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0020E</attrlabl>
+                <attrdef>COMMUTING TO WORK:  Workers 16 years and over:  Car, truck, or van -- carpooled</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0021E</attrlabl>
+                <attrdef>COMMUTING TO WORK:  Workers 16 years and over:  Public transportation (excluding taxicab)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0022E</attrlabl>
+                <attrdef>COMMUTING TO WORK:  Workers 16 years and over:  Walked</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0023E</attrlabl>
+                <attrdef>COMMUTING TO WORK:  Workers 16 years and over:  Other means</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0024E</attrlabl>
+                <attrdef>COMMUTING TO WORK:  Workers 16 years and over:  Worked from home</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0025E</attrlabl>
+                <attrdef>COMMUTING TO WORK:  Workers 16 years and over:  Mean travel time to work (minutes)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0026E</attrlabl>
+                <attrdef>OCCUPATION:  Civilian employed population 16 years and over</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0027E</attrlabl>
+                <attrdef>OCCUPATION:  Civilian employed population 16 years and over:  Management, business, science, and arts occupations</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0028E</attrlabl>
+                <attrdef>OCCUPATION:  Civilian employed population 16 years and over:  Service occupations</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0029E</attrlabl>
+                <attrdef>OCCUPATION:  Civilian employed population 16 years and over:  Sales and office occupations</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0030E</attrlabl>
+                <attrdef>OCCUPATION:  Civilian employed population 16 years and over:  Natural resources, construction, and maintenance occupations</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0031E</attrlabl>
+                <attrdef>OCCUPATION:  Civilian employed population 16 years and over:  Production, transportation, and material moving occupations</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0032E</attrlabl>
+                <attrdef>INDUSTRY:  Civilian employed population 16 years and over</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0033E</attrlabl>
+                <attrdef>INDUSTRY:  Civilian employed population 16 years and over:  Agriculture, forestry, fishing and hunting, and mining</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0034E</attrlabl>
+                <attrdef>INDUSTRY:  Civilian employed population 16 years and over:  Construction</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0035E</attrlabl>
+                <attrdef>INDUSTRY:  Civilian employed population 16 years and over:  Manufacturing</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0036E</attrlabl>
+                <attrdef>INDUSTRY:  Civilian employed population 16 years and over:  Wholesale trade</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0037E</attrlabl>
+                <attrdef>INDUSTRY:  Civilian employed population 16 years and over:  Retail trade</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0038E</attrlabl>
+                <attrdef>INDUSTRY:  Civilian employed population 16 years and over:  Transportation and warehousing, and utilities</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0039E</attrlabl>
+                <attrdef>INDUSTRY:  Civilian employed population 16 years and over:  Information</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0040E</attrlabl>
+                <attrdef>INDUSTRY:  Civilian employed population 16 years and over:  Finance and insurance, and real estate and rental and leasing</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0041E</attrlabl>
+                <attrdef>INDUSTRY:  Civilian employed population 16 years and over:  Professional, scientific, and management, and administrative and waste management services</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0042E</attrlabl>
+                <attrdef>INDUSTRY:  Civilian employed population 16 years and over:  Educational services, and health care and social assistance</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0043E</attrlabl>
+                <attrdef>INDUSTRY:  Civilian employed population 16 years and over:  Arts, entertainment, and recreation, and accommodation and food services</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0044E</attrlabl>
+                <attrdef>INDUSTRY:  Civilian employed population 16 years and over:  Other services, except public administration</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0045E</attrlabl>
+                <attrdef>INDUSTRY:  Civilian employed population 16 years and over:  Public administration</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0046E</attrlabl>
+                <attrdef>CLASS OF WORKER:  Civilian employed population 16 years and over</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0047E</attrlabl>
+                <attrdef>CLASS OF WORKER:  Civilian employed population 16 years and over:  Private wage and salary workers</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0048E</attrlabl>
+                <attrdef>CLASS OF WORKER:  Civilian employed population 16 years and over:  Government workers</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0049E</attrlabl>
+                <attrdef>CLASS OF WORKER:  Civilian employed population 16 years and over:  Self-employed in own not incorporated business workers</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0050E</attrlabl>
+                <attrdef>CLASS OF WORKER:  Civilian employed population 16 years and over:  Unpaid family workers</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0051E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0052E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  Less than $10,000</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0053E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  $10,000 to $14,999</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0054E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  $15,000 to $24,999</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0055E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  $25,000 to $34,999</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0056E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  $35,000 to $49,999</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0057E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  $50,000 to $74,999</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0058E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  $75,000 to $99,999</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0059E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  $100,000 to $149,999</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0060E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  $150,000 to $199,999</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0061E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  $200,000 or more</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0062E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  Median household income (dollars)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0063E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  Mean household income (dollars)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0064E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  With earnings</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0065E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  With earnings:  Mean earnings (dollars)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0066E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  With Social Security</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0067E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  With Social Security:  Mean Social Security income (dollars)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0068E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  With retirement income</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0069E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  With retirement income:  Mean retirement income (dollars)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0070E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  With Supplemental Security Income</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0071E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  With Supplemental Security Income:  Mean Supplemental Security Income (dollars)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0072E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  With cash public assistance income</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0073E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  With cash public assistance income:  Mean cash public assistance income (dollars)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0074E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Total households:  With Food Stamp/SNAP benefits in the past 12 months</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0075E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Families</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0076E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Families:  Less than $10,000</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0077E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Families:  $10,000 to $14,999</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0078E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Families:  $15,000 to $24,999</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0079E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Families:  $25,000 to $34,999</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0080E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Families:  $35,000 to $49,999</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0081E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Families:  $50,000 to $74,999</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0082E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Families:  $75,000 to $99,999</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0083E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Families:  $100,000 to $149,999</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0084E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Families:  $150,000 to $199,999</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0085E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Families:  $200,000 or more</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0086E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Families:  Median family income (dollars)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0087E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Families:  Mean family income (dollars)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0088E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Per capita income (dollars)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0089E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Nonfamily households</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0090E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Nonfamily households:  Median nonfamily income (dollars)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0091E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Nonfamily households:  Mean nonfamily income (dollars)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0092E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Median earnings for workers (dollars)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0093E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Median earnings for male full-time, year-round workers (dollars)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0094E</attrlabl>
+                <attrdef>INCOME AND BENEFITS (IN 2022 INFLATION-ADJUSTED DOLLARS):  Median earnings for female full-time, year-round workers (dollars)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0095E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0096E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population:  With health insurance coverage</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0097E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population:  With health insurance coverage:  With private health insurance</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0098E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population:  With health insurance coverage:  With public coverage</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0099E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population:  No health insurance coverage</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0100E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population under 19 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0101E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population under 19 years:  No health insurance coverage</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0102E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population 19 to 64 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0103E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population 19 to 64 years:  In labor force:</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0104E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population 19 to 64 years:  In labor force::  Employed:</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0105E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population 19 to 64 years:  In labor force::  Employed::  With health insurance coverage</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0106E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population 19 to 64 years:  In labor force::  Employed::  With health insurance coverage:  With private health insurance</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0107E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population 19 to 64 years:  In labor force::  Employed::  With health insurance coverage:  With public coverage</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0108E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population 19 to 64 years:  In labor force::  Employed::  With health insurance coverage:  With public coverage</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0109E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population 19 to 64 years:  In labor force::  Unemployed:</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0110E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population 19 to 64 years:  In labor force::  Unemployed::  With health insurance coverage</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0111E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population 19 to 64 years:  In labor force::  Unemployed::  With health insurance coverage:  With private health insurance</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0112E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population 19 to 64 years:  In labor force::  Unemployed::  With health insurance coverage:  With public coverage</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0113E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population 19 to 64 years:  In labor force::  Unemployed::  No health insurance coverage</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0114E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population 19 to 64 years:  Not in labor force:</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0115E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population 19 to 64 years:  Not in labor force::  With health insurance coverage</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0116E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population 19 to 64 years:  Not in labor force::  With health insurance coverage:  With private health insurance</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0117E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population 19 to 64 years:  Not in labor force::  With health insurance coverage:  With public coverage</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0118E</attrlabl>
+                <attrdef>HEALTH INSURANCE COVERAGE:  Civilian noninstitutionalized population 19 to 64 years:  Not in labor force::  No health insurance coverage</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0119P</attrlabl>
+                <attrdef>PERCENTAGE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL:  All families</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0120P</attrlabl>
+                <attrdef>PERCENTAGE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL:  All families:  With related children of the householder under 18 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0121P</attrlabl>
+                <attrdef>PERCENTAGE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL:  All families:  With related children of the householder under 18 years:  With related children of the householder under 5 years only</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0122P</attrlabl>
+                <attrdef>PERCENTAGE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL:  All families:  Married couple families</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0123P</attrlabl>
+                <attrdef>PERCENTAGE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL:  All families:  Married couple families:  With related children of the householder under 18 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0124P</attrlabl>
+                <attrdef>PERCENTAGE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL:  All families:  Married couple families:  With related children of the householder under 18 years:  With related children of the householder under 5 years only</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0125P</attrlabl>
+                <attrdef>PERCENTAGE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL:  All families:  Female householder, no spouse present</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0126P</attrlabl>
+                <attrdef>PERCENTAGE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL:  All families:  Female householder, no spouse present:  With related children of the householder under 18 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0127P</attrlabl>
+                <attrdef>PERCENTAGE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL:  All families:  Female householder, no spouse present:  With related children of the householder under 18 years:  With related children of the householder under 5 years only</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0128P</attrlabl>
+                <attrdef>PERCENTAGE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL:  All people</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0129P</attrlabl>
+                <attrdef>PERCENTAGE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL:  All people:  Under 18 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0130P</attrlabl>
+                <attrdef>PERCENTAGE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL:  All people:  Under 18 years:  Related children of the householder under 18 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0131P</attrlabl>
+                <attrdef>PERCENTAGE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL:  All people:  Under 18 years:  Related children of the householder under 18 years:  Related children of the householder under 5 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0132P</attrlabl>
+                <attrdef>PERCENTAGE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL:  All people:  Under 18 years:  Related children of the householder under 18 years:  Related children of the householder 5 to 17 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0133P</attrlabl>
+                <attrdef>PERCENTAGE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL:  All people:  18 years and over</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0134P</attrlabl>
+                <attrdef>PERCENTAGE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL:  All people:  18 years and over:  18 to 64 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0135P</attrlabl>
+                <attrdef>PERCENTAGE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL:  All people:  18 years and over:  65 years and over</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0136P</attrlabl>
+                <attrdef>PERCENTAGE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL:  All people:  People in families</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP03_0137P</attrlabl>
+                <attrdef>PERCENTAGE WHOSE INCOME IN THE PAST 12 MONTHS IS BELOW THE POVERTY LEVEL:  All people:  Unrelated individuals 15 years and over</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>GIS_ID</attrlabl>
+                <attrdef>GIS Identifier</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>SE_ANNO_CAD_DATA</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE.AREA</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE.LEN</attrlabl>
+            </attr>
+        </detailed>
+    </eainfo>
+    <distinfo>
+        <distrib>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Office of the Chief Technology Officer</cntorg>
+                </cntorgp>
+                <cntpos>GIS Data Coordinator</cntpos>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>200 I Street, SE</address>
+                    <city>Washington</city>
+                    <state>DC</state>
+                    <postal>20003</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>(202) 727-2277</cntvoice>
+                <cntfax>(202) 727-6857</cntfax>
+                <cntemail>octo@dc.gov</cntemail>
+                <hours>8:30 am to 5:30 pm</hours>
+            </cntinfo>
+        </distrib>
+        <distliab>See access and use constraints information.</distliab>
+    </distinfo>
+    <metainfo>
+        <metd>20240326</metd>
+        <metc>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Office of the Chief Technology Officer</cntorg>
+                </cntorgp>
+                <cntpos>GIS Data Coordinator</cntpos>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>200 I Street, SE</address>
+                    <city>Washington</city>
+                    <state>DC</state>
+                    <postal>20003</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>(202) 727-2277</cntvoice>
+                <cntfax>(202) 727-6857</cntfax>
+                <cntemail>octo@dc.gov</cntemail>
+                <hours>8:30 am to 5:30 pm</hours>
+            </cntinfo>
+        </metc>
+        <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+        <metstdv>FGDC-STD-001-1998</metstdv>
+        <mettc>local time</mettc>
+    </metainfo>
+</metadata>

@@ -44,7 +44,9 @@ social_shp = gpd.read_file(os.path.join(path,"ACS_5-Year_Social_Characteristics_
 social_shp['disability'] = social_shp['DP02_0072E'] / social_shp['DP02_0071E']
 
 # Poverty
-poverty_shp = gpd.read_file(os.path.join(path, "cleaned_poverty.shp"))
+poverty_shp = gpd.read_file(os.path.join(path, "ACS_5-Year_Economic_Characteristics_DC_Ward/ACS_5-Year_Economic_Characteristics_DC_Ward.shp"))
+poverty_shp = poverty_shp.rename(columns={'DP03_0119P': 'poverty'})
+
 
 #Clean CC dataset
 clean_cc = cooling_centers[(cooling_centers["USER_Open_"] == "All") & (~cooling_centers["USER_Hours"].str.contains('closed', case=False, na=False))]
@@ -125,24 +127,6 @@ def server(input, output, session):
             return clean_cc
         return clean_cc[clean_cc["USER_Type"].isin(input.center_type())]
 
-    def add_legend(ax, selected_df):
-        """Add legend at the bottom center of the plot."""
-        unique_types = selected_df["USER_Type"].unique()
-        legend_patches = [
-            Patch(color=type_colors[type_], label=type_)
-            for type_ in unique_types if type_ in type_colors
-        ]
-        ax.legend(
-            handles=legend_patches,
-            title="Cooling Center Types",
-            loc="lower center",
-            bbox_to_anchor=(0.5, -0.2),
-            ncol=2,
-            fontsize="small",
-            title_fontsize="small",
-            frameon=False,
-        )
-
     def add_borders_and_labels(ax):
         """Add ward borders and labels if toggle is enabled."""
         if input.toggle_ward(): 
@@ -171,15 +155,52 @@ def server(input, output, session):
         # Align CRS
         selected_df = selected_df.to_crs(empty_DC.crs)
 
-        # Plot cooling center points
-        selected_df.plot(
-            ax=ax,
-            column="USER_Type",
-            alpha=0.7,
-            cmap="tab10",
-            legend=False,
-            markersize=50,
+        # Plot cooling center points by type using type_colors
+        for c_type, color in type_colors.items():
+            subset = selected_df[selected_df["USER_Type"] == c_type]
+            if not subset.empty:
+                subset.plot(
+                    ax=ax,
+                    color="white",
+                    markersize=55,
+                    alpha=1.0,
+                    label=None
+                )
+                # Plot actual dot
+                subset.plot(
+                    ax=ax,
+                    color=color,  # Use color from type_colors
+                    markersize=40,  # Original size for the dot
+                    alpha=1.0,
+                    label=c_type  # Exclude from the legend
+                )
+                
+    def add_legend(ax, selected_df):
+        """Add legend at the bottom center of the plot."""
+        unique_types = selected_df["USER_Type"].unique()
+        legend_patches = [
+            Patch(color=type_colors[type_], label=type_)
+            for type_ in unique_types if type_ in type_colors
+        ]
+        ax.legend(
+            handles=legend_patches,
+            title="Cooling Center Types",
+            loc="lower center",
+            bbox_to_anchor=(0.5, -0.2),
+            ncol=2,
+            fontsize="small",
+            title_fontsize="small",
+            frameon=False,
         )
+
+    # def customize_colorbar(cbar, vmin, vmax, label):
+    #     """
+    #     Customize color bar by setting ticks, labels, and title.
+    #     """
+    #     cbar.ax.set_title(label, loc="center", fontsize=10, fontweight="bold", pad=10)  # Title for the color bar
+    #     cbar.set_ticks([vmin, vmax])  # Set min and max ticks
+    #     cbar.ax.set_yticklabels([f"{vmin:.1f}", f"{vmax:.1f}"], fontsize=9)  # Adjust tick labels
+
 
     @render.plot
     def environ_plot():
@@ -187,7 +208,7 @@ def server(input, output, session):
         fig, ax = plt.subplots(figsize=(10, 8))
 
         if selected_env_plot == "HEI":
-            heat_dc.plot(column="HEI", cmap="viridis", legend=True, ax=ax, edgecolor="0.8", linewidth=0.5)
+            heat_dc.plot(column="HEI", cmap="viridis", alpha=0.8, legend=True, ax=ax, edgecolor="0.8", linewidth=0.5)
             ax.set_title("Heat Exposure Index", fontsize=14, fontweight="bold")
 
         elif selected_env_plot == "HSI":
@@ -215,7 +236,7 @@ def server(input, output, session):
         fig, ax = plt.subplots(figsize=(10, 8))
 
         if selected_social_plot == "poc":
-            acs_shp.plot(column="poc", cmap="YlGnBu", legend=True, ax=ax, edgecolor="0.8", linewidth=0.2)
+            acs_shp.plot(column="poc", cmap="YlGnBu", alpha=0.8, legend=True, ax=ax, edgecolor="0.8", linewidth=0.2)
             ax.set_title("People of Color", fontsize=14, fontweight="bold")
 
         elif selected_social_plot == "poverty":
