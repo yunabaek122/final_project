@@ -245,7 +245,7 @@ def server(input, output, session):
 
         elif selected_social_plot == "asthma":
             heat_dc.plot(column="ASTHMA", cmap="Reds", legend=True, ax=ax, edgecolor="0.8", linewidth=0.5)
-            ax.set_title("Asthma", fontsize=14, fontweight="bold")
+            ax.set_title("Asthma (%)", fontsize=14, fontweight="bold")
 
         add_borders_and_labels(ax)
         add_cooling_centers(ax) 
