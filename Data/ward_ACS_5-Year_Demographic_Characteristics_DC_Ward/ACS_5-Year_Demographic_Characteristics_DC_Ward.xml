@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+    <idinfo>
+        <citation>
+            <citeinfo>
+                <origin/>
+                <pubdate>20240329</pubdate>
+                <title>ACS Demographic Characteristics DC Ward</title>
+                <geoform>vector digital data</geoform>
+                <pubinfo>
+                    <pubplace/>
+                    <publish>Office of the Chief Technology Officer</publish>
+                </pubinfo>
+            </citeinfo>
+        </citation>
+        <descript>
+            <abstract>Age, Sex, Race, Ethnicity, Total Housing Units, and Voting Age Population. This service is updated annually with American Community Survey (ACS) 5-year data. Contact: District of Columbia, Office of Planning. Email: planning@dc.gov. Geography: 2022 Wards (State Legislative Districts [Upper Chamber]). Current Vintage: 2018-2022. ACS Table(s): DP05. Data downloaded from: Census Bureau's API for American Community Survey. Date of API call: January 2, 2024. National Figures: data.census.gov. Please cite the Census and ACS when using this data. Data Note from the Census: Data are based on a sample and are subject to sampling variability. The degree of uncertainty for an estimate arising from sampling variability is represented through the use of a margin of error. The value shown here is the 90 percent margin of error. The margin of error can be interpreted as providing a 90 percent probability that the interval defined by the estimate minus the margin of error and the estimate plus the margin of error (the lower and upper confidence bounds) contains the true value. In addition to sampling variability, the ACS estimates are subject to nonsampling error (for a discussion of nonsampling variability, see Accuracy of the Data). The effect of nonsampling error is not represented in these tables. Data Processing Notes: This layer is updated automatically when the most current vintage of ACS data is released each year, usually in December. The layer always contains the latest available ACS 5-year estimates. It is updated annually within days of the Census Bureau's release schedule. Boundaries come from the US Census TIGER geodatabases. Boundaries are updated at the same time as the data updates (annually), and the boundary vintage appropriately matches the data vintage as specified by the Census. These are Census boundaries with water and/or coastlines clipped for cartographic purposes. For census tracts, the water cutouts are derived from a subset of the 2020 AWATER (Area Water) boundaries offered by TIGER. For state and county boundaries, the water and coastlines are derived from the coastlines of the 500k TIGER Cartographic Boundary Shapefiles. The original AWATER and ALAND fields are still available as attributes within the data table (units are square meters). Field alias names were created based on the Table Shells file available from the American Community Survey Summary File Documentation page. Data processed using R statistical package and ArcGIS Desktop. Margin of Error was not included in this layer but is available from the Census Bureau. Contact the Office of Planning for more information about obtaining Margin of Error values.</abstract>
+            <purpose>This layer contains the most current release of data from the American Community Survey (ACS) about demographic characteristics. These are 5-year estimates shown by 2022 Ward boundaries.</purpose>
+        </descript>
+        <status>
+            <update>Annually</update>
+        </status>
+        <spdom>
+            <bounding>
+                <westbc>-77.119862</westbc>
+                <eastbc>-76.909262</eastbc>
+                <northbc>38.995852</northbc>
+                <southbc>38.791590</southbc>
+            </bounding>
+        </spdom>
+        <keywords>
+            <theme>
+                <themekt>None</themekt>
+                <themekey>ACS</themekey>
+                <themekey>age</themekey>
+                <themekey>American Community Survey</themekey>
+                <themekey>Census Bureau</themekey>
+                <themekey>demographic characteristics</themekey>
+                <themekey>District of Columbia</themekey>
+                <themekey>OP</themekey>
+                <themekey>population</themekey>
+                <themekey>race</themekey>
+                <themekey>sex</themekey>
+                <themekey>ward</themekey>
+                <themekey>Washington DC</themekey>
+            </theme>
+        </keywords>
+        <accconst>Other Constraints</accconst>
+        <useconst>This work is licensed under a Creative Commons Attribution 4.0 International License.</useconst>
+        <ptcontac>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Office of Planning</cntorg>
+                    <cntper>State Data Center</cntper>
+                </cntorgp>
+                <cntpos>Demographic Specialist</cntpos>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>1100 4th Street, SW, Suite 650 East</address>
+                    <city>Washington</city>
+                    <state>DC</state>
+                    <postal>20024</postal>
+                    <country>TV</country>
+                </cntaddr>
+                <cntvoice>(202) 442-7600</cntvoice>
+                <cntfax>(202) 442-7638</cntfax>
+                <cntemail>planning@dc.gov</cntemail>
+                <hours>8:30 am to 5 pm</hours>
+            </cntinfo>
+        </ptcontac>
+        <ptcontac>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Office of the Chief Technology Officer</cntorg>
+                </cntorgp>
+                <cntpos>GIS Data Coordinator</cntpos>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>200 I Street, SE</address>
+                    <city>Washington</city>
+                    <state>DC</state>
+                    <postal>20003</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>(202) 727-2277</cntvoice>
+                <cntfax>(202) 727-6857</cntfax>
+                <cntemail>octo@dc.gov</cntemail>
+                <hours>8:30 am to 5:30 pm</hours>
+            </cntinfo>
+        </ptcontac>
+        <datacred>Office of Planning</datacred>
+        <native>Esri ArcGIS 13.1.3.41833</native>
+    </idinfo>
+    <spdoinfo>
+        <direct>Vector</direct>
+        <ptvctinf>
+            <sdtsterm>
+                <sdtstype>GT-polygon composed of chains</sdtstype>
+                <ptvctcnt>0</ptvctcnt>
+            </sdtsterm>
+        </ptvctinf>
+    </spdoinfo>
+    <eainfo>
+        <detailed>
+            <enttyp>
+                <enttypl>DCGIS.ACS_Demographic_DC_Ward</enttypl>
+                <enttypd>Feature Class</enttypd>
+                <enttypds>OP</enttypds>
+            </enttyp>
+            <attr>
+                <attrlabl>GEOID</attrlabl>
+                <attrdef>GEOID</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>NAMELSAD</attrlabl>
+                <attrdef>NAMELSAD</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>OBJECTID</attrlabl>
+                <attrdef>Internal feature number.</attrdef>
+                <attrdefs>Esri</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Sequential unique whole numbers that are automatically generated.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE</attrlabl>
+                <attrdef>Feature geometry.</attrdef>
+                <attrdefs>Esri</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Coordinates defining the features.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>NAME</attrlabl>
+                <attrdef>NAME</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0001E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0002E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  Male</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0003E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  Female</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0004E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  Sex ratio (males per 100 females)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0005E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  Under 5 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0006E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  5 to 9 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0007E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  10 to 14 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0008E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  15 to 19 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0009E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  20 to 24 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0010E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  25 to 34 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0011E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  35 to 44 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0012E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  45 to 54 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0013E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  55 to 59 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0014E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  60 to 64 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0015E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  65 to 74 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0016E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  75 to 84 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0017E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  85 years and over</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0018E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  Median age (years)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0019E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  Under 18 years</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0020E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  16 years and over</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0021E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  18 years and over</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0022E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  21 years and over</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0023E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  62 years and over</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0024E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  65 years and over</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0025E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  18 years and over</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0026E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  18 years and over:  Male</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0027E</attrlabl>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0028E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  18 years and over:  Sex ratio (males per 100 females)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0029E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  65 years and over</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0030E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  65 years and over:  Male</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0031E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  65 years and over:  Female</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0032E</attrlabl>
+                <attrdef>SEX AND AGE:  Total population:  65 years and over:  Sex ratio (males per 100 females)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0033E</attrlabl>
+                <attrdef>RACE:  Total population</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0034E</attrlabl>
+                <attrdef>RACE:  Total population:  One race</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0035E</attrlabl>
+                <attrdef>RACE:  Total population:  Two or More Races</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0036E</attrlabl>
+                <attrdef>RACE:  Total population:  One race</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0037E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  White</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0038E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  Black or African American</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0039E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  American Indian and Alaska Native</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0040E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  American Indian and Alaska Native:  Cherokee tribal grouping</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0041E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  American Indian and Alaska Native:  Chippewa tribal grouping</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0042E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  American Indian and Alaska Native:  Navajo tribal grouping</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0043E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  American Indian and Alaska Native:  Sioux tribal grouping</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0044E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  Asian</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0045E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  Asian:  Asian Indian</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0046E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  Asian:  Chinese</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0047E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  Asian:  Filipino</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0048E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  Asian:  Japanese</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0049E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  Asian:  Korean</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0050E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  Asian:  Vietnamese</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0051E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  Asian:  Other Asian</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0052E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  Native Hawaiian and Other Pacific Islander</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0053E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  Native Hawaiian and Other Pacific Islander:  Chamorro</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0054E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  Native Hawaiian and Other Pacific Islander:  Native Hawaiian</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0055E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  Native Hawaiian and Other Pacific Islander:  Samoan</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0056E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  Native Hawaiian and Other Pacific Islander:  Other Native Hawaiian and Other Pacific Islander</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0057E</attrlabl>
+                <attrdef>RACE:  Total population:  One race:  Some Other Race</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0058E</attrlabl>
+                <attrdef>RACE:  Total population:  Two or More Races</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0059E</attrlabl>
+                <attrdef>RACE:  Total population:  Two or More Races:  White and Black or African American</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0060E</attrlabl>
+                <attrdef>RACE:  Total population:  Two or More Races:  White and American Indian and Alaska Native</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0061E</attrlabl>
+                <attrdef>RACE:  Total population:  Two or More Races:  White and Asian</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0062E</attrlabl>
+                <attrdef>RACE:  Total population:  Two or More Races:  White and Some Other Race</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0063E</attrlabl>
+                <attrdef>RACE:  Total population:  Two or More Races:  Black or African American and American Indian and Alaska Native</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0064E</attrlabl>
+                <attrdef>RACE:  Total population:  Two or More Races:  Black or African American and Some Other Race</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0065E</attrlabl>
+                <attrdef>Race alone or in combination with one or more other races:  Total population</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0066E</attrlabl>
+                <attrdef>Race alone or in combination with one or more other races:  Total population:  White</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0067E</attrlabl>
+                <attrdef>Race alone or in combination with one or more other races:  Total population:  Black or African American</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0068E</attrlabl>
+                <attrdef>Race alone or in combination with one or more other races:  Total population:  American Indian and Alaska Native</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0069E</attrlabl>
+                <attrdef>Race alone or in combination with one or more other races:  Total population:  Asian</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0070E</attrlabl>
+                <attrdef>Race alone or in combination with one or more other races:  Total population:  Native Hawaiian and Other Pacific Islander</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0071E</attrlabl>
+                <attrdef>Race alone or in combination with one or more other races:  Total population:  Some Other Race</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0072E</attrlabl>
+                <attrdef>HISPANIC OR LATINO AND RACE:  Total population</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0073E</attrlabl>
+                <attrdef>HISPANIC OR LATINO AND RACE:  Total population:  Hispanic or Latino (of any race)</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0074E</attrlabl>
+                <attrdef>HISPANIC OR LATINO AND RACE:  Total population:  Hispanic or Latino (of any race):  Mexican</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0075E</attrlabl>
+                <attrdef>HISPANIC OR LATINO AND RACE:  Total population:  Hispanic or Latino (of any race):  Puerto Rican</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0076E</attrlabl>
+                <attrdef>HISPANIC OR LATINO AND RACE:  Total population:  Hispanic or Latino (of any race):  Cuban</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0077E</attrlabl>
+                <attrdef>HISPANIC OR LATINO AND RACE:  Total population:  Hispanic or Latino (of any race):  Other Hispanic or Latino</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0078E</attrlabl>
+                <attrdef>HISPANIC OR LATINO AND RACE:  Total population:  Not Hispanic or Latino</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0079E</attrlabl>
+                <attrdef>HISPANIC OR LATINO AND RACE:  Total population:  Not Hispanic or Latino:  White alone</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0080E</attrlabl>
+                <attrdef>HISPANIC OR LATINO AND RACE:  Total population:  Not Hispanic or Latino:  Black or African American alone</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0081E</attrlabl>
+                <attrdef>HISPANIC OR LATINO AND RACE:  Total population:  Not Hispanic or Latino:  American Indian and Alaska Native alone</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0082E</attrlabl>
+                <attrdef>HISPANIC OR LATINO AND RACE:  Total population:  Not Hispanic or Latino:  Asian alone</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0083E</attrlabl>
+                <attrdef>HISPANIC OR LATINO AND RACE:  Total population:  Not Hispanic or Latino:  Native Hawaiian and Other Pacific Islander alone</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0084E</attrlabl>
+                <attrdef>HISPANIC OR LATINO AND RACE:  Total population:  Not Hispanic or Latino:  Some Other Race alone</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0085E</attrlabl>
+                <attrdef>HISPANIC OR LATINO AND RACE:  Total population:  Not Hispanic or Latino:  Two or More Races</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0086E</attrlabl>
+                <attrdef>HISPANIC OR LATINO AND RACE:  Total population:  Not Hispanic or Latino:  Two or More Races:  Two races including Some Other Race</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0087E</attrlabl>
+                <attrdef>HISPANIC OR LATINO AND RACE:  Total population:  Not Hispanic or Latino:  Two or More Races:  Two races excluding Some Other Race, and three or more races</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0088E</attrlabl>
+                <attrdef>Total housing units</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0089E</attrlabl>
+                <attrdef>CITIZEN, VOTING AGE POPULATION:  Citizen, 18 and over population</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0090E</attrlabl>
+                <attrdef>CITIZEN, VOTING AGE POPULATION:  Citizen, 18 and over population:  Male</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>DP05_0091E</attrlabl>
+                <attrdef>CITIZEN, VOTING AGE POPULATION:  Citizen, 18 and over population:  Female</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>GIS_ID</attrlabl>
+                <attrdef>GIS Identifier</attrdef>
+                <attrdefs>OP</attrdefs>
+            </attr>
+            <attr>
+                <attrlabl>SE_ANNO_CAD_DATA</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE.AREA</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE.LEN</attrlabl>
+            </attr>
+        </detailed>
+    </eainfo>
+    <distinfo>
+        <distrib>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Office of the Chief Technology Officer</cntorg>
+                </cntorgp>
+                <cntpos>GIS Data Coordinator</cntpos>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>200 I Street, SE</address>
+                    <city>Washington</city>
+                    <state>DC</state>
+                    <postal>20003</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>(202) 727-2277</cntvoice>
+                <cntfax>(202) 727-6857</cntfax>
+                <cntemail>octo@dc.gov</cntemail>
+                <hours>8:30 am to 5:30 pm</hours>
+            </cntinfo>
+        </distrib>
+        <distliab>See access and use constraints information.</distliab>
+    </distinfo>
+    <metainfo>
+        <metd>20240402</metd>
+        <metc>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Office of the Chief Technology Officer</cntorg>
+                </cntorgp>
+                <cntpos>GIS Data Coordinator</cntpos>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>200 I Street, SE</address>
+                    <city>Washington</city>
+                    <state>DC</state>
+                    <postal>20003</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>(202) 727-2277</cntvoice>
+                <cntfax>(202) 727-6857</cntfax>
+                <cntemail>octo@dc.gov</cntemail>
+                <hours>8:30 am to 5:30 pm</hours>
+            </cntinfo>
+        </metc>
+        <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+        <metstdv>FGDC-STD-001-1998</metstdv>
+        <mettc>local time</mettc>
+    </metainfo>
+</metadata>

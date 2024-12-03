@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+    <idinfo>
+        <citation>
+            <citeinfo>
+                <title>Cooling Centers - District of Columbia</title>
+                <onlink>https://services.arcgis.com/neT9SoYxizqTHZPH/arcgis/rest/services/Cooling_Centers_2020_Viewing/FeatureServer</onlink>
+            </citeinfo>
+        </citation>
+        <descript>
+            <abstract>When the temperature or heat index in the District reaches 95 degrees, District Government, through the Department of Human Services (DHS) and the Homeland Security and Emergency Management Agency (HSEMA), will implement the Heat Emergency Plan and activate cooling centers for residents to seek relief. Residents and visitors should take extra steps to beat the heat by staying in the shade or air-conditioning, drinking plenty of water and visiting a cooling center. Periods of high heat and humidity can cause medical problems such as heat exhaustion and stroke. Select DC facilities are open to the public and places you can go to beat the heat. For more information on where to go, call 311 or text 311 to 32311. https://hsema.dc.gov/page/heat-emergency-plan-information.</abstract>
+            <purpose>When the temperature or heat index in the District reaches 95 degrees, District Government, through the Department of Human Services (DHS) and the Homeland Security and Emergency Management Agency (HSEMA), will implement the Heat Emergency Plan and activate cooling centers for residents to seek relief. For more information on where to go, call 311 or text 311 to 32311. https://hsema.dc.gov/page/heat-emergency-plan-information</purpose>
+        </descript>
+        <keywords>
+            <theme>
+                <themekt>None</themekt>
+                <themekey>Cooling Centers</themekey>
+                <themekey>Heat Emergency</themekey>
+                <themekey>recreation centers</themekey>
+                <themekey>public libraries</themekey>
+                <themekey>schools</themekey>
+                <themekey>temperature</themekey>
+                <themekey>weather</themekey>
+                <themekey>dc</themekey>
+                <themekey>district of columbia</themekey>
+                <themekey>washington dc</themekey>
+            </theme>
+        </keywords>
+        <accconst>Other Constraints</accconst>
+        <useconst>This work is licensed under a Creative Commons Attribution 4.0 International License.</useconst>
+        <datacred>Homeland Security and Emergency Management Agency</datacred>
+    </idinfo>
+    <metainfo>
+        <metd>20240801</metd>
+        <metc>
+            <cntinfo>
+                <!--no contact person or organization name available-->
+            </cntinfo>
+        </metc>
+        <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+        <metstdv>FGDC-STD-001-1998</metstdv>
+        <mettc>local time</mettc>
+    </metainfo>
+</metadata>

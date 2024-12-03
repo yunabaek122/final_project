@@ -9,6 +9,9 @@
 *.user
 *.userosscache
 *.sln.docstates
+__pycache__/
+venv/
+archive/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -395,4 +398,4 @@ FodyWeavers.xsd
 *.msp
 
 # JetBrains Rider
-*.sln.iml
+*.sln.iml.DS_Store

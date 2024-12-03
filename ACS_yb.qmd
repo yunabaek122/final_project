@@ -62,6 +62,24 @@ acs_shp['poc'] = (acs_shp['DP05_0033E'] - acs_shp['DP05_0079E']) / acs_shp['DP05
 # ax.set_axis_off()
 # ax.set_title('People of Color')
 # plt.show()
+# poverty, elderly, disability
+acs_shp = gpd.read_file(os.path.join(path, "ACS_5-Year_Demographic_Characteristics_DC_Census_Tract/ACS_5-Year_Demographic_Characteristics_DC_Census_Tract.shp"))
+
+# income / poverty
+social_shp = gpd.read_file(os.path.join(path,"ACS_5-Year_Social_Characteristics_DC_Census_Tract/ACS_5-Year_Social_Characteristics_DC_Census_Tract.shp"))
+```
+
+```{python}
+empty_DC = gpd.read_file(os.path.join(path, "Wards_from_2022/Wards_from_2022.shp"))
+```
+
+POC
+```{python}
+# Compute 'poc' as the ratio of the difference between 'DP05_0033E' and 'DP05_0079E' to 'DP05_0033E'
+# DP05_0033E = RACE: Total population
+# DP05_0079E = HISPANIC OR LATINO AND RACE: Total population: Not Hispanic or Latino: White alone
+
+acs_shp['poc'] = (acs_shp['DP05_0033E'] - acs_shp['DP05_0079E']) / acs_shp['DP05_0033E']
 ```
 
 ```{python}
@@ -318,7 +336,12 @@ zip_shp = gpd.read_file(os.path.join(path, "Zip_Codes/Zip_Codes.shp"))
 
 poverty_merged_shp = zip_shp.merge(poverty_df, on='ZIPCODE', how='left')
 
-# poverty_merged_shp = ward_shp.merge(poverty_merged_shp, on='geometry', how='left')
+cleaned_poverty_shp = poverty_merged_shp[['ZIPCODE', 'poverty', 'geometry']]
+cleaned_poverty_shp.to_file("cleaned_poverty.shp")
+
+print(cleaned_poverty_shp['poverty'].dtype) 
+cleaned_poverty_shp['poverty'] = pd.to_numeric(cleaned_poverty_shp['poverty'], errors='coerce')
+
 ```
 
 ```{python}
@@ -357,8 +380,37 @@ legend_kwds={'label': 'Population',
 ```
 
 
-Poverty status based on Income level
 
+Attempt #2
+
+```{python}
+# Step 1: Load the data
+poverty_df = pd.read_csv(os.path.join(path, "ACSST5Y2022.S1701-2024-11-21T005208.csv"))
+
+# Step 2: Filter rows with ZIP code information
+poverty_df = poverty_df[poverty_df['Label (Grouping)'].str.startswith('ZCTA5')]
+
+# Step 3: Extract ZIP codes
+poverty_df['ZIPCODE'] = poverty_df['Label (Grouping)'].str.extract(r'ZCTA5 (\d{5})')[0].astype(int)
+
+# Step 4: Rename the chosen column
+poverty_df.rename(columns={
+    'Population for whom poverty status is determined!!ALL INDIVIDUALS WITH INCOME BELOW THE FOLLOWING POVERTY RATIOS!!50 percent of poverty level': 'poverty_rate'
+}, inplace=True)
+
+# Step 5: Convert to numeric
+poverty_df['poverty_rate'] = poverty_df['poverty_rate'].str.replace(',', '').astype(float, errors='coerce')
+
+# Step 6: Keep only relevant columns
+poverty_cleaned = poverty_df[['ZIPCODE', 'poverty_rate']]
+
+# Verify the cleaned data
+print(poverty_cleaned.head())
+
+```
+
+
+Poverty status based on Income level
 
 ```{python}
 income_df = pd.read_csv(os.path.join(path, "ACSST5Y2022.S1901-2024-11-27T173227.csv"))
@@ -415,13 +467,12 @@ plt.show()
 
 
 Debugging plot
-
+- Data based on estimates for "10000 and worse" for families
+- Couldn't merge by common variable "geometry" with ward data. 
 ```{python}
-ward_shp = gpd.read_file(os.path.join(path, "Wards_from_2022/Wards_from_2022.shp"))
-```
 
-```{python}
-income_merged_shp = ward_shp.merge(income_df, on='geometry', how='left')
+# income_merged_shp = cityboundaries_shp.merge(income_df, on='ZIPCODE', how='left')
+
 ```
 
 ```{python}
@@ -441,4 +492,3 @@ plt.tight_layout()
 plt.show()
 
 ```
-
