@@ -4,7 +4,7 @@ author: "Yuna Baek, Mithila Iyer, Sumner Perera"
 date: "07/12/2024"
 output:
   html:
-    include-in-header: 
+    include-in-header:
       text: |
         \usepackage{fvextra}
         \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
@@ -20,13 +20,13 @@ output:
   eval: false
 ---
 
-Github Usernames: yunabaek122, mithilaiyer, sumnerper
+Github Usernames: [yunabaek122](https://github.com/yunabaek122), [mithilaiyer](https://github.com/mithilaiyer), [sumnerper](https://github.com/sumnerper)\
 Section: 1 (all group members)
 
-* Background 
+### Background 
 As temperatures rise, US cities will experience extreme heat and a need to protect their residents under these conditions. Cities often face an “Urban Heat Island Effect” where man made structures and a lack of trees and vegetation, make urban regions hotter than the suburbs ([Keep Cool DC, 2022](https://storymaps.arcgis.com/stories/7692809a1d6a498482d3fed431f432f9)). Many cities employ the use of cooling centers, which are air-conditioned publicly accessible buildings, in their extreme heat adaptation strategies. According to one study Washington DC ranked highest in accessibility among 81 US cities ([Adams et al 2023](https://journals.sagepub.com/doi/full/10.1177/00333549221148174)). DC has experienced rising temperatures at nearly an entire degree per decade and expects the number of heat days to triple by 2050 ([Keep Cool DC, 2022](https://storymaps.arcgis.com/stories/7692809a1d6a498482d3fed431f432f9)). Their current strategy activates cooling centers when the heat index reaches 95℉ and they have 137 centers across the city. 
 
-* Research Question & Datasets
+### Research Question & Datasets
 A map of DC cooling centers suggests wide distribution of centers across city wards and a variety of center types for residents to choose from ([2024 Cooling Center Map](https://dcgis.maps.arcgis.com/apps/webappviewer/index.html?id=c975110d05a24acba55f65eef283e05b)). Using this information we wanted to investigate whether existing cooling centers in DC equitably meet the needs of its residents and more specifically, if they protect resident subgroups (i.e. low-income residents, elderly population, etc.) who are disproportionately impacted by extreme heat. In order to do this we drew upon existing heat index and heat sensitivity maps and their datasets, and cooling center data. Our data falls into three buckets: demographics, environmental, and geographic. 
 
 Demographics: Demographic data, including the percentage of people of color (POC), older adults (65+), low-income populations, and individuals with disabilities, were sourced from the American Community Survey (ACS). The data was processed to calculate percentages for each demographic and visualized as a choropleth map to show the density of these populations across different regions. Low-income data had to be accessed and presented at the ward level due to the unavailability of shapefile and geospatial data. 
@@ -35,34 +35,32 @@ Environmental: We used the Heat Sensitivity Exposure Index (2022) dataset compil
 
 Geographic: We used the 2022 Election Wards dataset and the 2024 Cooling Centers dataset which are both publicly available through the DC Government Open Data portal. We chose to filter for cooling centers that were not closed and open to all genders. We chose to consider all gender facilities under the premise that full accessibility means co-gendered spaces that are also  open to non-binary gendered individuals. This reduced the number of Low-Barrier Shelters and Day Centers significantly.
 
-* Static Plots and Shiny App
-::: {.columns}
-![HEI](pictures/HEI.png){width=25%}
-![HSI](pictures/HSI.png){width=25%}
-![lowincome](pictures/lowincome.png){width=25%}
-![poc](pictures/poc.png){width=25%}
-:::
+### Static Plots and Shiny App
+![HEI](pictures/HEI.png){width=23%}
+![HSI](pictures/HSI.png){width=23%}
+![lowincome](pictures/lowincome.png){width=23%}
+![poc](pictures/poc.png){width=23%}
+
 The distribution of dots across the map of DC may suggest a uniform spread of cooling centers, but a closer analysis of the choropleths reveals important disparities. The HEI plot indicates that areas in the central part of the city are more exposed to heat. HSI has an opposite trend, with wards 7 and 8, which have higher concentrations of low-income populations and people of color, appearing to be more vulnerable to heat. This suggests that the central areas may have better infrastructure to mitigate heat, while the neighborhoods with higher vulnerability are underserved. When we exclude layers showing public libraries and spray parks, the disparity in access to low-barrier cooling centers becomes even more evident. Wards 7 and 8 are particularly underserved in terms of accessible cooling centers. This issue becomes even more concerning when we focus on locations with fewer entry requirements such as low-barrier facilities and day centers, as there are none available in Wards 7 and 8.
 
-::: {.columns}
-![asthma](pictures/asthma.png){width=40%}
+![asthma](pictures/asthma.png){width=60%}
 ![olderadults](pictures/olderadults.png){width=25%}
-:::
+
 Individuals with pre-existing respiratory conditions are particularly vulnerable to extreme heat ([Asthma and Allergy Foundation of America, 2024](https://aafa.org/asthma/asthma-triggers-causes/weather-triggers-asthma/)). We chose to compare a map of the HSI with a map of asthma prevalence in DC in order to examine the correlation between sensitivity and conditions that could be worsened by high levels of heat. We find that Wards 7 and 8 are the most sensitive to heat - a factor that is amplified by the high incidences of asthma in their populations.
 
 Seniors are disproportionately vulnerable to rising temperatures ([Harvard Medicine, 2021](https://magazine.hms.harvard.edu/articles/effects-heat-older-adults)). The above plot indicates that while DC has several centers specifically for this subgroup, there is an inconsistency between their distributions and the concentration of older adults within wards. For example, Wards 4 and 6 do not have their centers located closer to where the most seniors live, raising concerns about accessibility especially in terms of mobility. 
 
-* Policy Implications of Findings 
+### Policy Implications of Findings 
 Adverse Health Impacts: There is significant correlation between regions that have a high percent of adults with asthma and a higher HSI (Wards 7 and 8) but not many specialized cooling centers for populations that would be disproportionately impacted by heat-related health conditions. Elderly people are amongst the most vulnerable to effects of extreme heat but also struggle to perceive that they are ([Bedi et al 2023](https://pmc.ncbi.nlm.nih.gov/articles/PMC9378433/#:~:text=Cooling%20centers%20are%20a%20common,risk%20of%20heat%2Drelated%20morbidity)). Cooling centers therefore not only act as centers of refuge but also can be preventative vehicles of health safety and education for vulnerable populations. 
 
 Infrastructure: The static plot comparison between HEI and Low-Income populations across the city reveal that Wards 7 and 8 with the highest percent of low-income residents have moderate HEI. Despite this, the HSI for these wards are the highest which is cause for concern and may suggest opportunity for new green infrastructure developments that reduces the HEI. For example, covered bus stations or private properties such as malls or coffee shops which residents already turn to for cooling needs. 
 
 Vulnerable Populations: The static plot of the elderly population across the city with senior wellness centers overlaid reveals less than adequate coverage of these specialized centers by high density regions. In some cases there are public libraries available beside these regions which makes it difficult to determine whether these specialized cooling centers are being used effectively, whether other cooling centers can be considered substitutes, and whether more specialized centers should be established or not. 
 
-* Areas for Future Research 
+### Areas for Future Research 
 We believe that cooling center utilization, visitation data, and operations can be immediate areas for future research. 51% of interview respondents never visit a cooling center on extreme heat days ([Keep Cool DC, 2022](https://storymaps.arcgis.com/stories/7692809a1d6a498482d3fed431f432f9)). Future exploration into transportation data, age, and use of privately owned places may hold some answers. Additionally, by exploring cooling center visitation data researchers can determine whether specialized centers are used as intended or should be scaled in size or number. Lastly, an analysis of operations data at cooling centers such as energy costs, safety, cleanliness, and maintenance, and formal designation of the centers can help policymakers determine if DC’s 137 centers are functional and prepared to serve as places of refuge when temperatures soar. 
 
-```{python}
+```{python eval=FALSE}
 import pandas as pd 
 import shiny
 import geopandas as gpd 
@@ -93,7 +91,6 @@ empty_DC = gpd.read_file(os.path.join(path, "Wards_from_2022/Wards_from_2022.shp
 heat_dc = gpd.read_file(os.path.join(path, "Heat_Sensitivity_Exposure_Index.shp"))
 cc_dc = gpd.read_file(os.path.join(path, "Cooling_Centers_-_District_of_Columbia.shp"))
 wards_dc = gpd.read_file(os.path.join(path, "Wards_from_2022.shp"))
-cc_dc.plot(marker='o', color = "green", figsize=(10,8), alpha=0.5)
 cc_dc = cc_dc.to_crs(heat_dc.crs)
 #Variable cleaning
 heat_dc['HSI'] = heat_dc['HSI'].apply(lambda x: x if str(x).startswith('0') else np.nan)
